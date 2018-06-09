@@ -1,2 +1,2 @@
 # stream
-stream is a Music streaming web-app in progress as my IMG summer assignment
+Stream aims to be a webapp using Django, DRF, and Django Channels as backend and using React as frontend which can be used to stream live music on a PC, while you can control the song using other PC's connected by LAN
