@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Stream Signup{% endblock %}
+
+{% block content %}
+    <h2>Sign Up</h2>
+    <form method='post'>
+        {% csrf_token %}
+            <tr><th><label for="id_username">Your DJ name:</label></th><td><input type="text" name="username" required autofocus id="id_username" maxlength="150" /><br /><span class="helptext" style="color: grey">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></td></tr><br />
+            
+
+            <tr><th><label for="id_password1">Password:</label></th><td><input type="password" name="password1" required id="id_password1" /><br /><span class="helptext"><ul><li>Your password can&#39;t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can&#39;t be a commonly used password.</li><li>Your password can&#39;t be entirely numeric.</li></ul></span></td></tr><br />
+
+            <tr><th><label for="id_password2">Password confirmation:</label></th><td><input type="password" name="password2" required id="id_password2" /><br /><span class="helptext">Enter the same password as before, for verification.</span></td></tr><br />
+
+            <button type="submit">SignUp</button>
+        </form>
+{% endblock %}
