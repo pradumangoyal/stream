@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+hi <h1 style="display: inline">{{ request.user.username }}</h2>
+{% if message %}<p>{{ message }}</p>{% endif %}
+<br /> <a href="{% url 'logout' %}">Logout</a>
+{% endblock %}
