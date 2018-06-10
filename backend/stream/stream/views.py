@@ -51,7 +51,7 @@ def toggle(request):
     return redirect('home')
 
 @login_required(login_url='login')
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PUT', 'DELETE', 'PATCH'])
 def user_detail(request, username):
         user = get_object_or_404(User, username=username)
 
@@ -66,6 +66,15 @@ def user_detail(request, username):
                     serializer.save()
                     return Response(serializer.data)
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            
+            elif request.method == 'PATCH':
+                serializer = serializers.UserSerializer(user, data=request.data, partial=True)
+                
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            
 
             elif request.method == 'DELETE':
                 snippet.delete()
