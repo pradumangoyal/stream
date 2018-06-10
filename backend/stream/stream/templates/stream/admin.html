@@ -3,35 +3,29 @@
 {% load static %}
 <head>
     <title>Admin Portal</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}" />
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/Cookies.js' %}"></script>
+    <script src="{% static 'js/admin.js' %}">
+    </script>
 </head>
 <body>
     <h1>hi {{ request.user.username }} (admin)</h1>
-    <div>
-    <h2> active </h2>
-    <ul>
+    <div id="active" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <h2>New DJs Entry</h2>
         {% for user in active_users %}
-            <li>{{ user.username }}</li>
+            {% if not user.is_superuser %}
+            <div draggable="true" ondragstart="drag(event)" id="{{ user.username }}" class="draggable">{{ user.username }}</div>
+        {% endif %}
         {% endfor %}
-    </ul>
     </div>
-    <div>
-    <h2> Inactive </h2>
-    <ul>
+    <div id="inactive" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <h2>Hired By IMG </h2>
         {% for user in inactive_users %}
-            <li>{{ user.username }}</li>
+            <div draggable="true" ondragstart="drag(event)" id="{{ user.username}}" class="draggable">{{user.username}}</div>
         {% endfor %}
-    </ul>
     </div>
-
-
-
-
-
     <a href="{% url 'logout' %}">Logout</a>
-<script>
-    console.log('hello');
-</script>
 </body>
 </html>
 
