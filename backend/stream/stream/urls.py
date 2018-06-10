@@ -25,7 +25,8 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('login/', auth_views.login,{'template_name': 'stream/login.html'}, name='login'),
     path('logout/', auth_views.logout, name='logout'),
-    path('api/user_active_toggle/', views.toggle, name='active_toggle'),
+    path('api/user/<str:username>/', views.user_detail, name='active_toggle'),
+    path('<str:id>/', views.try_d),
     path('', views.home, name="home"),
 
 ]

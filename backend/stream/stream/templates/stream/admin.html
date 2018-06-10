@@ -23,11 +23,11 @@
         {% endfor %}
     </ul>
     </div>
-    <form method="post" action="{% url 'active_toggle' %}">
-      {% csrf_token %}  
-        <input type="text" name="user" />
-        <input type="submit" value="submit">
-    </form>
+
+
+
+
+
     <a href="{% url 'logout' %}">Logout</a>
 <script>
     console.log('hello');
