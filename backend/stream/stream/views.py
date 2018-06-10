@@ -1,6 +1,6 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -23,6 +23,19 @@ def signup(request):
 @login_required(login_url='login')
 def home(request):
     if(request.user.is_superuser):
-        return render(request, 'stream/home.html', {'message': 'admin ki jai'})
+        active_users = User.objects.filter(is_active = True)
+        inactive_users = User.objects.filter(is_active = False)
+        return render(request, 'stream/admin.html', {'active_users': active_users, 'inactive_users': inactive_users})
     else:
         return render(request, 'stream/home.html')
+
+@login_required(login_url='login')
+def toggle(request):
+    if(request.user.is_superuser):
+        if(request.method == 'POST'):
+            user = request.POST['user']
+            user = get_object_or_404(User, username=user)
+            if(user):
+                user.is_active = not user.is_active
+                user.save()
+    return redirect('home')
