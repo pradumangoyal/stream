@@ -19,7 +19,8 @@ from . import views
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.views.generic.base import RedirectView
 from django.contrib.auth import views as auth_views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,7 +28,9 @@ urlpatterns = [
     path('login/', auth_views.login,{'template_name': 'stream/login.html'}, name='login'),
     path('logout/', auth_views.logout, name='logout'),
     path('api/user/<str:username>/', views.user_detail, name='active_toggle'),
-    path('<str:id>/', views.try_d),
+    path('update_profile/', views.change_password, name='update_profile'),
     path('', views.home, name="home"),
-
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

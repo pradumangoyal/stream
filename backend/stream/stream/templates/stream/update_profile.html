@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Stream{% endblock %}
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <script>alert('{{ message }}')</script>
+    {% endfor %}
+{% endif %}
+<h2>Hi, {{ request.user.username }}</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Save changes</button>
+</form>
+<a href ="{% url 'home' %}">Go to Home</a>
+{% endblock %}

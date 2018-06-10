@@ -3,5 +3,7 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 hi <h1 style="display: inline">{{ request.user.username }}</h2>
-<br /> <a href="{% url 'logout' %}">Logout</a>
+<br /> 
+<a href="{% url 'update_profile' %}">Update Profile</a>
+<a href="{% url 'logout' %}">Logout</a>
 {% endblock %}

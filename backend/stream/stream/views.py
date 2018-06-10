@@ -1,9 +1,10 @@
 from django.http import HttpResponse
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate, update_session_auth_hash
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view
 from rest_framework import generics
@@ -81,3 +82,22 @@ def user_detail(request, username):
                 return Response(status=status.HTTP_204_NO_CONTENT)
         else:
             return redirect('home')
+
+@login_required(login_url='login')
+def change_password(request):
+    if(request.method == 'POST'):
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('update_profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'stream/update_profile.html', {
+        'form': form
+    })
+
+
