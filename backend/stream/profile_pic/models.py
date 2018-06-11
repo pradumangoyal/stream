@@ -3,10 +3,10 @@ from .validations import FileValidator
 # Create your models here.
 
 
-def user_path(instance):
-    return 'profile/{}.png'.format(instance.user.username)
+def user_path(self, request):
+    return 'profile/{}.png'.format(request.user.username)
 
 
 class Image(models.Model):
     description = models.CharField(max_length=255, blank=True)
-    image = models.FileField(upload_to=user_path, validators=[FileValidator])
+    image = models.ImageField(upload_to=user_path)
