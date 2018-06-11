@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import filesizeformat
 
+
 @deconstructible
 class FileValidator:
     """
@@ -23,16 +24,20 @@ class FileValidator:
             myfile = FileField(validators=FileValidator(max_size=24*1024*1024), ...)
     """
 
-    extension_message = _("Extension '%(extension)s' not allowed. Allowed extensions are: '%(allowed_extensions)s.'")
-    mime_message = _("MIME type '%(mimetype)s' is not valid. Allowed types are: %(allowed_mimetypes)s.")
-    min_size_message = _('The current file %(size)s, which is too small. The minumum file size is %(allowed_size)s.')
-    max_size_message = _('The current file %(size)s, which is too large. The maximum file size is %(allowed_size)s.')
+    extension_message = _(
+        "Extension '%(extension)s' not allowed. Allowed extensions are: '%(allowed_extensions)s.'")
+    mime_message = _(
+        "MIME type '%(mimetype)s' is not valid. Allowed types are: %(allowed_mimetypes)s.")
+    min_size_message = _(
+        'The current file %(size)s, which is too small. The minumum file size is %(allowed_size)s.')
+    max_size_message = _(
+        'The current file %(size)s, which is too large. The maximum file size is %(allowed_size)s.')
 
     def __init__(self):
         self.allowed_extensions = ('png', 'jpg', 'jpeg')
         self.allowed_mimetypes = ('image/png', 'image/jpg', 'image/jpeg')
         self.min_size = 100
-        self.max_size =  24*1024*1024
+        self.max_size = 24 * 1024 * 1024
 
     def __call__(self, value):
         """
@@ -41,9 +46,9 @@ class FileValidator:
 
         # Check the extension
         ext = splitext(value.name)[1][1:].lower()
-        if self.allowed_extensions and not ext in self.allowed_extensions:
+        if self.allowed_extensions and ext not in self.allowed_extensions:
             message = self.extension_message % {
-                'extension' : ext,
+                'extension': ext,
                 'allowed_extensions': ', '.join(self.allowed_extensions)
             }
 
@@ -51,7 +56,7 @@ class FileValidator:
 
         # Check the content type
         mimetype = mimetypes.guess_type(value.name)[0]
-        if self.allowed_mimetypes and not mimetype in self.allowed_mimetypes:
+        if self.allowed_mimetypes and mimetype not in self.allowed_mimetypes:
             message = self.mime_message % {
                 'mimetype': mimetype,
                 'allowed_mimetypes': ', '.join(self.allowed_mimetypes)

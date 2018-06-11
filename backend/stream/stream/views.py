@@ -12,7 +12,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from . import serializers
 from django.conf import settings
-from profile_pic.forms import ImageForm 
+from profile_pic.forms import ImageForm
 from django.core.files.storage import FileSystemStorage
 
 
@@ -31,6 +31,7 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'stream/signup.html', {'form': form})
 
+
 def try_d(request, id):
     return HttpResponse("Try {}".format(id))
 
@@ -38,11 +39,15 @@ def try_d(request, id):
 @login_required(login_url='login')
 def home(request):
     if(request.user.is_superuser):
-        active_users = User.objects.filter(is_active = True)
-        inactive_users = User.objects.filter(is_active = False)
-        return render(request, 'stream/admin.html', {'active_users': active_users, 'inactive_users': inactive_users})
+        active_users = User.objects.filter(is_active=True)
+        inactive_users = User.objects.filter(is_active=False)
+        return render(request,
+                      'stream/admin.html',
+                      {'active_users': active_users,
+                       'inactive_users': inactive_users})
     else:
         return render(request, 'stream/home.html')
+
 
 @login_required(login_url='login')
 def toggle(request):
@@ -55,37 +60,43 @@ def toggle(request):
                 user.save()
     return redirect('home')
 
+
 @login_required(login_url='login')
 @api_view(['GET', 'PUT', 'DELETE', 'PATCH'])
 def user_detail(request, username):
-        user = get_object_or_404(User, username=username)
+    user = get_object_or_404(User, username=username)
 
-        if( request.user.is_superuser ):
-            if request.method == 'GET':
-                serializer = serializers.UserSerializer(user)
+    if(request.user.is_superuser):
+        if request.method == 'GET':
+            serializer = serializers.UserSerializer(user)
+            return Response(serializer.data)
+
+        elif request.method == 'PUT':
+            serializer = serializers.UserSerializer(user, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
                 return Response(serializer.data)
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST)
 
-            elif request.method == 'PUT':
-                serializer = serializers.UserSerializer(user, data=request.data)
-                if serializer.is_valid():
-                    serializer.save()
-                    return Response(serializer.data)
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-            
-            elif request.method == 'PATCH':
-                serializer = serializers.UserSerializer(user, data=request.data, partial=True)
-                
-                if serializer.is_valid():
-                    serializer.save()
-                    return Response(serializer.data)
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-            
+        elif request.method == 'PATCH':
+            serializer = serializers.UserSerializer(
+                user, data=request.data, partial=True)
 
-            elif request.method == 'DELETE':
-                snippet.delete()
-                return Response(status=status.HTTP_204_NO_CONTENT)
-        else:
-            return redirect('home')
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST)
+
+        elif request.method == 'DELETE':
+            snippet.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+    else:
+        return redirect('home')
+
 
 @login_required(login_url='login')
 def change_password(request):
@@ -98,20 +109,19 @@ def change_password(request):
                 return redirect('update_profile')
             else:
                 messages.error(request, 'Profile Photo Not Updated')
-        else:    
+        else:
             form = PasswordChangeForm(request.user, request.POST)
             if form.is_valid():
                 user = form.save()
                 update_session_auth_hash(request, user)
-                messages.success(request, 'Your password was successfully updated!')
+                messages.success(
+                    request, 'Your password was successfully updated!')
                 return redirect('update_profile')
             else:
                 messages.error(request, 'Please correct the error below.')
-    
+
     form = PasswordChangeForm(request.user)
     return render(request, 'stream/update_profile.html', {
         'form1': ImageForm(),
         'form2': form
     })
-
-

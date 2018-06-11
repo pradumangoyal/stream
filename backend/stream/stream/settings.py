@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-                BASE_DIR + '/stream/templates/',
+            BASE_DIR + '/stream/templates/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -79,7 +79,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-]
+    ]
 }
 
 WSGI_APPLICATION = 'stream.wsgi.application'
