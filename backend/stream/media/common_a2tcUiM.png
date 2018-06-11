@@ -1,0 +1,306 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def prime(a, b):\n",
+    "    # To produce number in range to check if it is prime or not\n",
+    "    for i in range(a, b):\n",
+    "        # As 1 is not a prime number continue the loop without printing it\n",
+    "        if i == 1:\n",
+    "            continue\n",
+    "            \n",
+    "        flag = False\n",
+    "        for j in range(2, i):\n",
+    "            # If found a number that divides number to be checked break and identify it using flag\n",
+    "            if i % j == 0:\n",
+    "                flag += True\n",
+    "                break\n",
+    "                \n",
+    "        if not flag:  # Output the number if flag is not set\n",
+    "            print(i, end=', ')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, "
+     ]
+    }
+   ],
+   "source": [
+    "prime(22,100)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def fun(X, Y, Z, N):\n",
+    "    S = [[i,j,k] for i in range(0, X+1) for j in range(0, Y+1) for k in range(0, Z+1) if i+j+k != N]\n",
+    "    print (S)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 1]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "fun(1,1,1,2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def correction_string(word):\n",
+    "    word = word.replace(\".\",\". \")\n",
+    "    while '  ' in word: # Replace double space with single till you can find double spaces\n",
+    "        word = word.replace(\"  \",\" \")\n",
+    "    word = word.strip() # To strip the extra space at end\n",
+    "    print(word)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "This is my Land. And I am of This land JAi Kant Shikre.\n"
+     ]
+    }
+   ],
+   "source": [
+    "correction_string(\" This is my       Land.And I am  of This land JAi Kant Shikre. \")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import math\n",
+    "\n",
+    "\n",
+    "class Shape(object):\n",
+    "    pass\n",
+    "\n",
+    "\n",
+    "class Rectangle(Shape):\n",
+    "    def __init__(self, L, B):\n",
+    "        self.length = L\n",
+    "        self.breadth = B\n",
+    "        \n",
+    "    def area(self):\n",
+    "        return (self.length * self.breadth)\n",
+    "    \n",
+    "    def perimeter(self):\n",
+    "        return (2 * (self.length + self.breadth))\n",
+    "    \n",
+    "    def __str__(self):\n",
+    "        return (f\"This is a rectangle with length = {self.length} and breadth = {self.breadth}.\")\n",
+    "\n",
+    "    \n",
+    "class Circle(Shape):\n",
+    "    def __init__(self, R):\n",
+    "        self.radius = R\n",
+    "    \n",
+    "    def area(self):\n",
+    "        return (math.pi * self.radius * self.radius)\n",
+    "    \n",
+    "    def perimeter(self):\n",
+    "        return (2 * math.pi * self.radius)\n",
+    "    \n",
+    "    def __str__(self):\n",
+    "        return (f\"This is a Circle with radius = {self.radius}.\")\n",
+    "\n",
+    "    \n",
+    "class Square(Rectangle):\n",
+    "    def __init__(self, S):\n",
+    "        super(Square, self).__init__(S, S)    \n",
+    "        #calls parent's constructor i.e. rectangle and passing both arguments as side, setting Len = Width\n",
+    "    \n",
+    "    def __str__(self):\n",
+    "        return (f\"This is a Square with Side = {self.length}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def group_list(myList = [], *args):\n",
+    "    list_with_x = []\n",
+    "    list_without_x = []\n",
+    "    for x in myList:\n",
+    "         if x[0] == 'x':\n",
+    "            list_with_x.append(x)\n",
+    "         else:\n",
+    "            list_without_x.append(x)\n",
+    "    list_with_x.sort()\n",
+    "    list_without_x.sort()\n",
+    "    myList = (list_with_x + list_without_x)\n",
+    "    return myList"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fib = lambda n: n if n<2 else fib(n-1) + fib (n-2)\n",
+    "fib_cube = lambda n: fib(n)**3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Enter n :12\n",
+      "1\n",
+      "1\n",
+      "2\n",
+      "3\n",
+      "5\n",
+      "8\n",
+      "13\n",
+      "21\n",
+      "34\n",
+      "55\n",
+      "89\n"
+     ]
+    }
+   ],
+   "source": [
+    "n = input(\"Enter n :\")\n",
+    "n = int(n)\n",
+    "for i in range (1,n): \n",
+    "    print(fib(i))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class FileInfo(object):\n",
+    "    def __init__(self, input_file, output_file):\n",
+    "        self.filei = input_file\n",
+    "        self.fileo = output_file\n",
+    "        self.line = 0\n",
+    "        self.words = 0\n",
+    "        self.vowel = 0\n",
+    "        self.consonants = 0\n",
+    "        self.symbols = 0\n",
+    "        self.numbers = 0\n",
+    "    def process(self):\n",
+    "        with open (self.filei, 'r') as fin:\n",
+    "            with open (self.fileo, 'w') as fout:\n",
+    "                \n",
+    "                vowels = set(\"AEIOUaeiou\")\n",
+    "                cons = set(\"bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ\")\n",
+    "                numbers = set(\"1234567890\")\n",
+    "                \n",
+    "                for line in fin:\n",
+    "                    self.line += 1\n",
+    "                    word = line.split(\" \")\n",
+    "                    self.words = self.words + len(word)\n",
+    "                    \n",
+    "                    for letter in line:\n",
+    "                        if letter in vowels:\n",
+    "                            self.vowel += 1\n",
+    "                        if letter in cons:\n",
+    "                            self.consonants += 1\n",
+    "                        if not (letter.isalpha()) and not letter == \" \":\n",
+    "                            self.symbols += 1\n",
+    "                        if letter in numbers:\n",
+    "                            self.numbers += 1\n",
+    "                \n",
+    "                fout.write(f\"Line Count = {self.line}\\n\")\n",
+    "                fout.write(f\"Words Count = {self.words}\\n\")\n",
+    "                fout.write(f\"Vowels Count = {self.vowel}\\n\")\n",
+    "                fout.write(f\"Consonants Count = {self.consonants}\\n\")\n",
+    "                fout.write(f\"Symbols Count = {self.symbols}\\n\")\n",
+    "                fout.write(f\"Numbers Count = {self.numbers}\\n\")\n",
+    "                \n",
+    "                print(\"Line Count = \", self.line)\n",
+    "                print(\"Words Count = \", self.words)\n",
+    "                print(\"Vowels Count = \", self.vowel)\n",
+    "                print(\"Consonants Count = \", self.consonants)\n",
+    "                print(\"Symbols Count = \", self.symbols)\n",
+    "                print(\"Numbers Count = \", self.numbers)\n",
+    "                "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

@@ -11,6 +11,10 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from . import serializers
+from django.conf import settings
+from profile_pic.forms import ImageForm 
+from django.core.files.storage import FileSystemStorage
+
 
 def signup(request):
     if request.method == 'POST':
@@ -85,19 +89,29 @@ def user_detail(request, username):
 
 @login_required(login_url='login')
 def change_password(request):
+    form = PasswordChangeForm(request.user)
     if(request.method == 'POST'):
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)
-            messages.success(request, 'Your password was successfully updated!')
-            return redirect('update_profile')
-        else:
-            messages.error(request, 'Please correct the error below.')
-    else:
-        form = PasswordChangeForm(request.user)
+        if request.FILES:
+            form = ImageForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('update_profile')
+            else:
+                messages.error(request, 'Profile Photo Not Updated')
+        else:    
+            form = PasswordChangeForm(request.user, request.POST)
+            if form.is_valid():
+                user = form.save()
+                update_session_auth_hash(request, user)
+                messages.success(request, 'Your password was successfully updated!')
+                return redirect('update_profile')
+            else:
+                messages.error(request, 'Please correct the error below.')
+    
+    form = PasswordChangeForm(request.user)
     return render(request, 'stream/update_profile.html', {
-        'form': form
+        'form1': ImageForm(),
+        'form2': form
     })
 
 
