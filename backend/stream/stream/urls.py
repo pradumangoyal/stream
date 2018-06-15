@@ -14,13 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views import generic
+from rest_framework.schemas import get_schema_view
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 from . import views
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.views.generic.base import RedirectView
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
+from .api import EchoView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +35,11 @@ urlpatterns = [
     path('login/', auth_views.login, {'template_name': 'stream/login.html'}, name='login'),
     path('logout/', auth_views.logout, name='logout'),
     path('api/user/<str:username>/', views.user_detail, name='active_toggle'),
+    path('api/', get_schema_view()),
+    path('api/auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/auth/token/obtain/', TokenObtainPairView.as_view()),
+    path('api/auth/token/refresh/', TokenRefreshView.as_view()),
+    path('api/echo/', EchoView.as_view()),
     path('update_profile/', views.change_password, name='update_profile'),
     path('', views.home, name="home"),
 ]

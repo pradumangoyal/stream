@@ -12,7 +12,7 @@
 <body>
     <h1>hi {{ request.user.username }} (admin)</h1>
     <div id="active" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <h2>New DJs Entry</h2>
+    <h2>Hired By IMG</h2>
         {% for user in active_users %}
             {% if not user.is_superuser %}
             <div draggable="true" ondragstart="drag(event)" id="{{ user.username }}" class="draggable">{{ user.username }}</div>
@@ -20,7 +20,7 @@
         {% endfor %}
     </div>
     <div id="inactive" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <h2>Hired By IMG </h2>
+    <h2>New DJs Entries </h2>
         {% for user in inactive_users %}
             <div draggable="true" ondragstart="drag(event)" id="{{ user.username}}" class="draggable">{{user.username}}</div>
         {% endfor %}
