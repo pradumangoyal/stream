@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Stream Control</title>
+</head>
+<body>
+    <label for="url">URL</label>
+    <input id="url" type="search" /><br />
+    <label for="volume">Volume</label>
+    <input type="range" min="0" max="100" id="volume" /><br/>
+    <label for="duration">Duration</label>
+    <input type="number" min="0" max="500" id="duration" /><br/>
+    <label for="seek">Seek</label>
+    <input type="range" min="0" max="500" id="seek" /><br>
+    <input type="button" value="Pause" id="play" /><br/><br />
+    <input type="button" id="mute" value="mute"/><br />
+   <label for="message">Message</label>
+    <input type="text" id="message" /><br/>
+
+</body>
+<script>
+    
+   var form_url = document.getElementById('url');
+   var form_volume = document.getElementById('volume');
+   var form_duration = document.getElementById('duration');
+   var form_seek = document.getElementById('seek');
+   var form_play = document.getElementById('play');
+   var form_mute = document.getElementById('mute');
+   var form_message = document.getElementById('message');
+   var data_format =  {
+            'url': "",
+            'volume': "",
+            'duration': "",
+            'seek': "",
+            'play': "",
+            'mute': "",
+            'message': ""
+        }
+   var streamSocket = new WebSocket(
+        'ws://' + 'localhost:8000' + '/ws/stream/'
+    );
+
+
+    streamSocket.onmessage = function(e){
+        var data = JSON.parse(e.data);
+        url = data['url'] ;
+        volume = data['volume'];
+        duration = data['duration'];
+        seek = data['seek'];
+        play = data['play'];
+        mute = data['mute'];
+        message = data['message'];
+
+        (url === "") ? void(0) : (form_url.value = url);
+        (volume === "") ? void(0) : (form_volume.value = volume);
+        (duration === "") ? void(0) : (form_duration.value = duration);
+        (seek === "") ? void(0) : (form_seek.value = seek);
+        (play === "" ) ? void(0) : ((play === "1") ? form_play.value='Pause' : form_play.value='Play');
+        (mute === "") ? void(0) : ((mute === "1") ? form_mute.value='unmute' : form_mute.value='mute');
+        (message === "") ? void(0) : alert(message);
+    };
+
+    streamSocket.onclose  = function(e){
+        console.error('Chat Socket Closed Unxghsnj');
+    }
+
+    
+    form_url.onkeyup = function(e){
+        if (e.keyCode === 13 ){
+            data_format['url'] = form_url.value;
+            streamSocket.send(JSON.stringify(data_format));
+            data_format['url'] = "";}
+    };
+
+   form_volume.onchange = function(e){
+            data_format['volume'] = form_volume.value;
+            streamSocket.send(JSON.stringify(data_format));
+            data_format['volume'] = "";
+    };
+
+    form_duration.onchange = function(e){
+            data_format['duration'] = form_duration.value;
+            streamSocket.send(JSON.stringify(data_format));
+            data_format['duration'] = "";
+    };
+
+    form_seek.onchange = function(e){
+            data_format['seek'] = form_seek.value;
+            streamSocket.send(JSON.stringify(data_format));
+            data_format['seek'] = "";
+    };
+
+    form_play.onclick = function(e){
+            data_format['play'] = (form_play.value == 'Play' ? '1' : '0');
+            form_play.value = (form_play.value === 'Play' ? 'Pause' : 'Play'); 
+            streamSocket.send(JSON.stringify(data_format));
+            data_format['play'] = "";
+    };
+
+    form_mute.onclick = function(e){
+
+            data_format['mute'] = (form_mute.value == 'mute' ? '1' : '0');
+            form_mute.value = (form_mute.value === 'mute' ? 'unmute' : 'mute'); 
+            streamSocket.send(JSON.stringify(data_format));
+            data_format['mute'] = "";
+    };
+
+    form_message.onkeyup = function(e){
+        if(e.keyCode === 13){
+            data_format['message'] = form_message.value;
+            streamSocket.send(JSON.stringify(data_format));
+            data_format['message'] = "";
+            form_message.value=""
+}
+    };
+</script>
+</html>
