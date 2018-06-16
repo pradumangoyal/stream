@@ -6,15 +6,17 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from rest_framework.parsers import JSONParser
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import AllowAny
 from . import serializers
 from django.conf import settings
 from profile_pic.forms import ImageForm
 from django.core.files.storage import FileSystemStorage
-
+from stream_sockets.serializers import SongSerializer
+from stream_sockets.models import Song_model
 
 def signup(request):
     if request.method == 'POST':
@@ -60,6 +62,13 @@ def toggle(request):
                 user.save()
     return redirect('home')
 
+@api_view(['GET'])
+@permission_classes((AllowAny, ))
+def song_details(request):
+    if request.method == 'GET':
+        song = Song_model.objects.get(id=1)
+        serializer = SongSerializer(song)
+        return Response(serializer.data)
 
 @login_required(login_url='login')
 @api_view(['GET', 'PUT', 'DELETE', 'PATCH'])

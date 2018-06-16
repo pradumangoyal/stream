@@ -1,5 +1,6 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
 import json
+from .models import Song_model
 
 class StreamConsumer(AsyncWebsocketConsumer):
 
@@ -17,6 +18,7 @@ class StreamConsumer(AsyncWebsocketConsumer):
         )
 
     async def receive(self, text_data):
+        song = Song_model.objects.get(id=1)
         text_data_json = json.loads(text_data)
         url = text_data_json['url']
         volume = text_data_json['volume']
@@ -25,7 +27,21 @@ class StreamConsumer(AsyncWebsocketConsumer):
         play = text_data_json['play']
         mute = text_data_json['mute']
         message = text_data_json['message']
-        
+        if(url):
+            song.url = url
+        elif(volume):
+            song.volume = volume
+        elif(duration):
+            song.duration = duration
+        elif(seek):
+            song.seek = seek
+        elif(play):
+            song.play = play
+        elif(mute):
+            song.mute = mute
+        else:
+            pass
+        song.save()
         await self.channel_layer.group_send(
             "stream",
             {

@@ -39,6 +39,7 @@ urlpatterns = [
     path('api/auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/auth/token/obtain/', TokenObtainPairView.as_view()),
     path('api/auth/token/refresh/', TokenRefreshView.as_view()),
+    path('api/song/', views.song_details, name='active_song'),
     path('api/echo/', EchoView.as_view()),
     path('update_profile/', views.change_password, name='update_profile'),
     path('', views.home, name="home"),
