@@ -4,11 +4,12 @@ import React, {Component} from 'react'
 export default class VolumeControl extends Component {
   constructor(props){
         super(props);
-    //    const results = fetch('http://127.0.0.1:8000/api/song/');
-      //  const in_data = results.json();
-        this.state = { volume: ""};
+        this.state = ({volume: ""});
         this.handleChange = this.handleChange.bind(this);
+        this.initial = this.initial.bind(this);
+
     }
+
   handleChange(event){
            var data_format =  {
             'url': "",
@@ -17,13 +18,26 @@ export default class VolumeControl extends Component {
             'seek': "",
             'play': "",
             'mute': "",
-            'message': ""
+            'message': "",
+            'dj': "",
+            'token': JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token']
         }
             this.connection.send(JSON.stringify(data_format));
   }
+
+  initial(b = ""){
+    this.setState({volume: b});
+    }
   componentDidMount(){
         this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = function(e){console.log('Volume Socket connected Successfully')};
+        this.connection.onopen = function(e){console.log('Volume Socket connected Successfully')
+
+    //    fetch('http://localhost:8000/api/song/').then((result) => {
+      //  return result.json();
+       // }).then((jsonResult) => {
+       //     this.initial(jsonResult['volume']);
+   // })
+        };
         this.connection.onmessage = function(e){
         var data = JSON.parse(e.data); 
         var volume = data['volume'];
