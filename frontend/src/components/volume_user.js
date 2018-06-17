@@ -6,8 +6,7 @@ export default class VolumeControl extends Component {
         super(props);
         this.state = ({volume: ""});
         this.handleChange = this.handleChange.bind(this);
-        this.initial = this.initial.bind(this);
-
+        this.fetchVolumeData = this.fetchVolumeData.bind(this);
     }
 
   handleChange(event){
@@ -25,25 +24,25 @@ export default class VolumeControl extends Component {
             this.connection.send(JSON.stringify(data_format));
   }
 
-  initial(b = ""){
-    this.setState({volume: b});
-    }
-  componentDidMount(){
-        this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = function(e){console.log('Volume Socket connected Successfully')
+  fetchVolumeData(){
+        fetch('http://localhost:8000/api/song/').then((result) => { 
+            return result.json();
+        }).then((jsonResult) => {
+            this.setState({ volume: jsonResult['volume']});
+        })
+        }
 
-    //    fetch('http://localhost:8000/api/song/').then((result) => {
-      //  return result.json();
-       // }).then((jsonResult) => {
-       //     this.initial(jsonResult['volume']);
-   // })
-        };
-        this.connection.onmessage = function(e){
+  componentDidMount(){
+        this.fetchVolumeData();
+        this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
+        this.connection.onopen = (e) => {console.log('Volume Socket connected Successfully')
+
+        this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
         var volume = data['volume'];
         (volume === "") ? void(0) : this.setState({ volume: volume })
-    }.bind(this);
-}
+    };
+}}
   
   componentWillUnmount() {
         this.connection.onclose  = function(e){
