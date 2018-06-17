@@ -1,21 +1,21 @@
 import React, {Component} from 'react'
 
 
-export default class VolumeControl extends Component {
+export default class SeekControl extends Component {
   constructor(props){
         super(props);
-        this.state = ({volume: ""});
+        this.state = ({seek: "", duration: ""});
         this.handleChange = this.handleChange.bind(this);
-        this.fetchVolumeData = this.fetchVolumeData.bind(this);
+        this.fetchSeek = this.fetchSeek.bind(this);
     }
 
   handleChange = (event) => {
            var ref = JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token'];
             var data_format =  {
             'url': "",
-            'volume': event.target.value,
+            'volume': "",
             'duration': "",
-            'seek': "",
+            'seek': event.target.value,
             'play': "",
             'mute': "",
             'message': "",
@@ -24,29 +24,31 @@ export default class VolumeControl extends Component {
         }
             this.connection.send(JSON.stringify(data_format));
 }
-  fetchVolumeData(){
+  fetchSeek(){
         fetch('http://localhost:8000/api/song/').then((result) => { 
             return result.json();
         }).then((jsonResult) => {
-            this.setState({ volume: jsonResult['volume']});
+            this.setState({ seek: jsonResult['seek'], duration: jsonResult['duration']});
         })
         }
 
   componentDidMount(){
-        this.fetchVolumeData();
+        this.fetchSeek();
         this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = (e) => {console.log('Volume Socket connected Successfully')
+        this.connection.onopen = (e) => {console.log('Seek Socket connected Successfully')
 
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
-        var volume = data['volume'];
-        (volume === "") ? void(0) : this.setState({ volume: volume })
+        var seek = data['seek'];
+        var duration = data['duration'];
+        (seek === "") ? void(0) : this.setState({ seek: seek });
+        (duration === "" ) ? void(0) : this.setState({ duration: duration});
     };
 }}
   
   componentWillUnmount() {
         this.connection.onclose  = function(e){
-        console.error('Volume Socket Closed!!');
+        console.error('Seek Socket Closed!!');
     };
     }
 
@@ -54,7 +56,8 @@ export default class VolumeControl extends Component {
 
     return (
        <div>
-            <label>Volume: {this.state.volume} <input type="range" min="0" max="100" value={this.state.volume} onChange={this.handleChange} /></label>
+            <label>Seek: 0 <input type="range" min="0" max={this.state.duration} value={this.state.seek} onChange={this.handleChange} />{this.state.duration}</label>
+            <p>{this.state.seek}</p>
        </div> 
     )
   }

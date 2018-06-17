@@ -3,7 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 //import autorefresh from 'jwt-autorefresh'
 import VolumeControl from './components/volume_user';
-
+import SeekControl from './components/seek_user';
+import PlayControl from './components/play_user';
+import MuteControl from './components/mute_user'
+//import OptionImage from './components/option_image';
 //const refresh = () => {
  // const init =  { method: 'POST'
   //              , headers: { 'Content-Type': `application/x-www-form-urlencoded` }
@@ -37,13 +40,18 @@ import VolumeControl from './components/volume_user';
 class App extends Component {
   constructor(props){
      super(props) ;
-
+    this.handleClick = this.handleClick.bind(this);
      this.logout = this.logout.bind(this);  
    }
   logout(e){
     e.preventDefault();
     localStorage.removeItem("persist:polls");
     window.location.reload();
+    }
+
+    handleClick(e){
+        var a = document.getElementById('cont')
+        console.log('hey!' + a.getAttribute('label'));
     }
   render() {
     return (
@@ -53,6 +61,10 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <VolumeControl />
+        <SeekControl />
+        <PlayControl />
+        <MuteControl />
+        <div onClick={this.handleClick} label="hi" id="cont">Hi</div>
         <button onClick={this.logout}>LOGOUT</button>
       </div>
     );

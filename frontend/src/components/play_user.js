@@ -1,60 +1,63 @@
 import React, {Component} from 'react'
-
+import OptionImage from './option_image';
 
 export default class VolumeControl extends Component {
   constructor(props){
         super(props);
-        this.state = ({volume: ""});
-        this.handleChange = this.handleChange.bind(this);
-        this.fetchVolumeData = this.fetchVolumeData.bind(this);
+        this.state = ({play: ""});
+        this.handleClick = this.handleClick.bind(this);
+        this.fetchPlayData = this.fetchPlayData.bind(this);
     }
 
-  handleChange = (event) => {
+  handleClick = (event) => {
+            var a = document.getElementById('play-control').getAttribute('label');
+            var b = (a === "0" ? "1" : "0");
            var ref = JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token'];
             var data_format =  {
             'url': "",
-            'volume': event.target.value,
+            'volume': "",
             'duration': "",
             'seek': "",
-            'play': "",
+            'play': b,
             'mute': "",
             'message': "",
             'dj': "",
             'token': ref
         }
             this.connection.send(JSON.stringify(data_format));
+
 }
-  fetchVolumeData(){
+  fetchPlayData(){
         fetch('http://localhost:8000/api/song/').then((result) => { 
             return result.json();
         }).then((jsonResult) => {
-            this.setState({ volume: jsonResult['volume']});
+            this.setState({ play: jsonResult['play']});
         })
         }
 
   componentDidMount(){
-        this.fetchVolumeData();
+        this.fetchPlayData();
         this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = (e) => {console.log('Volume Socket connected Successfully')
+        this.connection.onopen = (e) => {console.log('Play/Pause Socket connected Successfully')
 
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
-        var volume = data['volume'];
-        (volume === "") ? void(0) : this.setState({ volume: volume })
+        var play = data['play'];
+        (play === "") ? void(0) : this.setState({ play: play })
     };
 }}
   
   componentWillUnmount() {
         this.connection.onclose  = function(e){
-        console.error('Volume Socket Closed!!');
+        console.error('Play/Pause Socket Closed!!');
     };
     }
 
   render() {
 
     return (
-       <div>
-            <label>Volume: {this.state.volume} <input type="range" min="0" max="100" value={this.state.volume} onChange={this.handleChange} /></label>
+       <div onClick={this.handleClick} label={this.state.play} id="play-control">
+            <OptionImage type="control" source={this.state.play === "1" ? "pause" : "play" } />
        </div> 
     )
   }
