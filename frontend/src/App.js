@@ -5,7 +5,8 @@ import './App.css';
 import VolumeControl from './components/volume_user';
 import SeekControl from './components/seek_user';
 import PlayControl from './components/play_user';
-import MuteControl from './components/mute_user'
+import MuteControl from './components/mute_user';
+import SearchBar from './components/searchbar';
 //import OptionImage from './components/option_image';
 //const refresh = () => {
  // const init =  { method: 'POST'
@@ -64,6 +65,7 @@ class App extends Component {
         <SeekControl />
         <PlayControl />
         <MuteControl />
+        <SearchBar />
         <div onClick={this.handleClick} label="hi" id="cont">Hi</div>
         <button onClick={this.logout}>LOGOUT</button>
       </div>

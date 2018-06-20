@@ -1,0 +1,21 @@
+.searchBar{
+    height: 30px;
+    width: 60vw;
+}
+
+.searchList{
+    width: 60vw;
+}
+
+.searchItem{
+    width: 60vw;
+    height: 120px;
+    background-color: white;
+    border: 1px black solid; 
+}
+
+.searchItem:hover {
+    border: 2px red solid;
+    background-color: rgba(255, 0 , 0, 0.5);
+    
+}

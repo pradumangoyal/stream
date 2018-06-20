@@ -1,0 +1,36 @@
+import React, {Component} from 'react'
+import YTSearch from 'youtube-api-search'
+import VideoList from "./videolist"
+import '../css/search.css'
+const API_KEY = "AIzaSyBWrbInxNOvSTDxxM95HEVF6ApT1VCTIOA"
+
+export default class SearchBar extends Component {
+  constructor(props){
+        super(props);
+        this.state = ({url: "", dj: "", videos: []});
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+  handleChange = (event) => {
+    if(event.target.value === "")
+        this.setState({videos: []});
+    else{
+    YTSearch({key: API_KEY, term: event.target.value}, (videos) => {
+        this.setState({
+            videos: videos,
+        });
+
+    });
+}}
+  
+
+  render() {
+
+    return (
+        <div>
+            <label><input type="search" onChange={this.handleChange}className="searchBar" /></label>
+            <VideoList videos={this.state.videos} />
+        </div>
+    );
+  }
+}
