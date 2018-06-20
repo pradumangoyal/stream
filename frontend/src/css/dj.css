@@ -1,0 +1,41 @@
+@font-face {
+    font-family: dj;
+    src: url('https://fonts.googleapis.com/css?family=Merienda');
+}
+.djcontainer{
+    background-color: white;
+    width: 350px;
+    height: 300px;
+    text-align: center;
+}
+.djcontainer img{
+    width: 350px;
+    height: 300px;
+}
+.djreaction{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    left: -20px;
+    top: -300px;
+    width: ;
+    z-index: 3;
+}
+.djreaction img{
+    width: 88px;
+    height: 88px;
+    z-index: 5;
+}
+.djname{
+    display: inline-block;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    left: -250px;
+    top: -50px;
+    width: 30%;
+    font-family: dj;
+    font-size: 25px; 
+}
