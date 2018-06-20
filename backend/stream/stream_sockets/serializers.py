@@ -10,6 +10,7 @@ class SongSerializer(serializers.ModelSerializer):
                     'seek', 
                     'play',     
                     'mute',     
-                    'dj'
+                    'dj',
+                    'title',
         )
         model = Song_model

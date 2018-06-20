@@ -9,4 +9,5 @@ class Song_model(models.Model):
     seek = models.CharField(max_length=30)
     play = models.CharField(max_length=2)
     mute = models.CharField(max_length=2)
+    title = models.CharField(max_length=500)
     dj = models.CharField(max_length=30)

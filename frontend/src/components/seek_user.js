@@ -20,6 +20,7 @@ export default class SeekControl extends Component {
             'mute': "",
             'message': "",
             'dj': "",
+            'title': "",
             'token': ref
         }
             this.connection.send(JSON.stringify(data_format));

@@ -22,6 +22,7 @@ export default class VolumeControl extends Component {
             'mute': b,
             'message': "",
             'dj': "",
+            'title': "",
             'token': ref
         }
             this.connection.send(JSON.stringify(data_format));

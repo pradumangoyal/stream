@@ -25,6 +25,7 @@ class StreamConsumer(AsyncWebsocketConsumer):
         song = Song_model.objects.get(id=1)
         text_data_json = json.loads(text_data)
         url = text_data_json['url']
+        title = text_data_json['title']
         token = text_data_json['token']
         volume = text_data_json['volume']
         duration = text_data_json['duration']
@@ -40,6 +41,7 @@ class StreamConsumer(AsyncWebsocketConsumer):
                 if(url):
                     song.url = url
                     song.dj = user.username
+                    song.title = title
                 elif(volume):
                     song.volume = volume
                 elif(duration):
@@ -65,6 +67,7 @@ class StreamConsumer(AsyncWebsocketConsumer):
                         'mute': mute,
                         'message': message,
                         'dj': user.username,
+                        'title': title,
                         'token': ""
                     })
 
@@ -78,9 +81,11 @@ class StreamConsumer(AsyncWebsocketConsumer):
         message = event['message']
         dj = event['dj']
         token = event['token']
+        title = event['title']
 
         await self.send(text_data=json.dumps({
                 'url': url,
+                'title': title,
                 'volume': volume,
                 'duration': duration,
                 'seek': seek,

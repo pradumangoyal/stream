@@ -9,6 +9,7 @@ export default class SearchBar extends Component {
         super(props);
         this.state = ({url: "", dj: "", videos: []});
         this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
   handleChange = (event) => {
@@ -23,14 +24,20 @@ export default class SearchBar extends Component {
     });
 }}
   
+  handleClick = () => {
+    var a = document.getElementById('searchBar');
+    a.value="";
+    }
+  
 
   render() {
 
     return (
         <div>
-            <label><input type="search" onChange={this.handleChange}className="searchBar" /></label>
+            <label><input type="search" onChange={this.handleChange} className="searchBar" id="searchBar"/></label>
+            <div onClick={this.handleClick}>
             <VideoList videos={this.state.videos} />
-        </div>
+        </div></div>
     );
   }
 }
