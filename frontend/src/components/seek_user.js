@@ -8,6 +8,20 @@ export default class SeekControl extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.fetchSeek = this.fetchSeek.bind(this);
     }
+  
+  componentDidMount(){
+        this.fetchSeek();
+        this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
+        this.connection.onopen = (e) => {console.log('Seek Socket connected Successfully')
+
+        this.connection.onmessage = (e) => {
+        var data = JSON.parse(e.data); 
+        var seek = data['seek'];
+        var duration = data['duration'];
+        (seek === "") ? void(0) : this.setState({ seek: seek });
+        (duration === "" ) ? void(0) : this.setState({ duration: duration});
+    };
+}}
 
   handleChange = (event) => {
            var ref = JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token'];
@@ -33,20 +47,7 @@ export default class SeekControl extends Component {
         })
         }
 
-  componentDidMount(){
-        this.fetchSeek();
-        this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = (e) => {console.log('Seek Socket connected Successfully')
 
-        this.connection.onmessage = (e) => {
-        var data = JSON.parse(e.data); 
-        var seek = data['seek'];
-        var duration = data['duration'];
-        (seek === "") ? void(0) : this.setState({ seek: seek });
-        (duration === "" ) ? void(0) : this.setState({ duration: duration});
-    };
-}}
-  
   componentWillUnmount() {
         this.connection.onclose  = function(e){
         console.error('Seek Socket Closed!!');

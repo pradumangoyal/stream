@@ -7,6 +7,8 @@ import SeekControl from './components/seek_user';
 import PlayControl from './components/play_user';
 import MuteControl from './components/mute_user';
 import SearchBar from './components/searchbar';
+import DJName from './components/dj_name'
+import TitleName from './components/title_name'
 //import OptionImage from './components/option_image';
 //const refresh = () => {
  // const init =  { method: 'POST'
@@ -44,6 +46,13 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
      this.logout = this.logout.bind(this);  
    }
+  componentDidMount(){
+    this.connection = new WebSocket('ws://localhost:8000/ws/stream/');   
+    this.connection.onopen = () => {console.log('WebSocket Connected')};
+    }
+  componentWillUnmount(){
+    this.connection.onclose = () => {console.error('WebSocket Closed!')};
+    }
   logout(e){
     e.preventDefault();
     localStorage.removeItem("persist:polls");
@@ -61,11 +70,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <VolumeControl />
-        <SeekControl />
-        <PlayControl />
-        <MuteControl />
-        <SearchBar />
+        <TitleName /><br />
+        <DJName />
+        <VolumeControl conn={this.connection}/>
+        <SeekControl conn={this.connection}/>
+        <PlayControl conn={this.connection}/>
+        <MuteControl conn={this.connection}/>
+        <SearchBar conn={this.connection}/>
         <div onClick={this.handleClick} label="hi" id="cont">Hi</div>
         <button onClick={this.logout}>LOGOUT</button>
       </div>
