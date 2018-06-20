@@ -25,6 +25,7 @@ export default class SearchBar extends Component {
 }}
   
   handleClick = () => {
+    this.setState({ videos: []});
     var a = document.getElementById('searchBar');
     a.value="";
     }
