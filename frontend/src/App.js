@@ -10,6 +10,7 @@ import SearchBar from './components/searchbar';
 import DJName from './components/dj_name'
 import TitleName from './components/title_name'
 import Message from './components/message'
+import MessageAlert from './components/message_alert'
 //import OptionImage from './components/option_image';
 //const refresh = () => {
  // const init =  { method: 'POST'
@@ -78,6 +79,7 @@ class App extends Component {
         <PlayControl conn={this.connection}/>
         <MuteControl conn={this.connection}/>
         <SearchBar conn={this.connection}/>
+        <MessageAlert />
         <div onClick={this.handleClick} label="hi" id="cont">Hi</div>
         <Message />
         <button onClick={this.logout}>LOGOUT</button>

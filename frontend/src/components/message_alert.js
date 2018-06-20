@@ -1,16 +1,10 @@
 import React, {Component} from 'react'
 import swal from 'sweetalert';
-import cheer from './images/reactions/cheer.gif';
-import wow from './images/reactions/wow.gif';
-import love from './images/reactions/love.gif';
-import disappointed from './images/reactions/disappointed.gif';
-import anger from './images/reactions/anger.gif';
-
-
-export default class TitleName extends Component {
+import '../css/reaction.css';
+export default class MessageAlert extends Component {
   constructor(props){
         super(props);
-        this.state = ({reaction: "", name: ""});
+        this.state = ({reaction: "", name: "", path: ""});
     }
 
 
@@ -25,15 +19,18 @@ export default class TitleName extends Component {
         if(reaction === "") 
             void(0)
         else{
-            this.setState({ reaction: reaction , name: name});
+            var a = './images/reactions/' + reaction + '.gif';
+            this.setState({ reaction: reaction , name: name, path: a});
             swal({
                 title: this.state.name, 
                 text:" reacted "+ this.state.reaction,
-                icon: this.state.reaction, 
+                icon: this.state.path, 
                 button: "OK!",
-                timer: 4500,
+                timer: 3000,
+                className: "messagealert",
 });
-    }};
+ 
+}};
 }}
   
   componentWillUnmount() {
