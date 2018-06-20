@@ -1,0 +1,19 @@
+.emoji_container{
+background-color: white;
+display: inline-block;
+margin-right: 5px;
+margin-bottom: 15px;
+padding: 2px;
+border: solid white 1px;
+border-radius: 5px;
+}
+
+.emoji_container:hover{
+border: grey 5px;
+height: 65px;
+}
+
+.reaction_container{
+height: 70px;
+margin-bottom: 15px;
+}
