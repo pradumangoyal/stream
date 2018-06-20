@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-
-
+import swal from 'sweetalert';
+import disc from './images/disc_change.png'
 export default class TitleName extends Component {
   constructor(props){
         super(props);
@@ -29,7 +29,13 @@ export default class TitleName extends Component {
             void(0)
         else{
             this.setState({ title: title , dj: dj});
-            alert(this.state.title + " played by " + this.state.dj);
+            swal({
+                title: this.state.title, 
+                text:" played by DJ"+this.state.dj,
+                icon: disc, 
+                button: "Cool",
+                timer: 4500,
+});
     }};
 }}
   
@@ -42,7 +48,7 @@ export default class TitleName extends Component {
   render() {
 
     return (
-       <span>{this.state.title}</span>
+       <span>{this.state.title} <span id="waste"></span></span>
     );
   }
 }

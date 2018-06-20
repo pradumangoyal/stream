@@ -24,7 +24,8 @@ export default class DJName extends Component {
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
         var dj = data['dj'];
-        (dj === "") ? void(0) : this.setState({ dj: dj })
+        var url = data['url'];
+        (url === "") ? void(0) : this.setState({ dj: dj })
     };
 }}
   
