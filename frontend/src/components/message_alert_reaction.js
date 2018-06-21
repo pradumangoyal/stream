@@ -7,10 +7,10 @@ export default class MessageAlertImage extends Component {
     }
 
     hide = () => {
-        document.getElementById("reply_emoji").style.display = "none";
+        document.getElementById("reply_emoji").style.visibility = "hidden";
     }
    show = () => {
-        document.getElementById("reply_emoji").style.display = "block";
+        document.getElementById("reply_emoji").style.visibility = "visible";
     }
   componentDidMount(){
         this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
@@ -38,7 +38,7 @@ export default class MessageAlertImage extends Component {
   render() {
 
     return (
-       <div><img src={this.state.path} alt="Reaction" className="reply_emoji" id="reply_emoji"/></div>
+       <div className="djreaccontainer" ><img src={this.state.path} alt="Reaction" className="reply_emoji" id="reply_emoji"/></div>
     );
   }
 }

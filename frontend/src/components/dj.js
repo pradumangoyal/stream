@@ -7,11 +7,11 @@ import dj_logo from './images/dj_logo.png'
 export default class DJImage extends Component{
 render(){
 return(
-<div>
+<div className="dj">
 <div className="djcontainer">
     <img src={dj} alt="dj" />
     <div className="djreaction"><MessageAlertImage /></div>
-    </div>
+ </div>
     <div className="djname"><DJName /></div>
 </div>
 );

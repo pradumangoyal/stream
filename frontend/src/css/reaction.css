@@ -1,5 +1,5 @@
 .emoji_container{
-background-color: white;
+
 display: inline-block;
 margin-right: 5px;
 margin-bottom: 15px;
@@ -7,7 +7,9 @@ padding: 2px;
 border: solid white 1px;
 border-radius: 5px;
 }
-
+.emojis:hover{
+	transform: translateY(-20px);
+}
 .emoji_container:hover{
 border: grey 5px;
 height: 65px;
@@ -24,7 +26,13 @@ margin-bottom: 15px;
 }
 
 .reply_emoji{
-    display: none;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
+    visibility: hidden;
+}
+
+.djreaccontainer{
+	text-align: center;
+	display: inline;
+	justify-content: center;
 }

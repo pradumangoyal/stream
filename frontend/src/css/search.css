@@ -1,21 +1,92 @@
+.container{
+	padding: 0;
+	margin: 0;
+	max-width: 100vw;
+	text-align: center;
+}
 .searchBar{
-    height: 30px;
-    width: 60vw;
+    height: 10vh;
+    outline: none;
+    min-height: 30px;
+    max-height: 50px;
+    width: 80vw;
+    max-width: 800px;
+    padding: 0;
+    font-size: 20px;
+    padding-left: 3px;
+    border: 2px #272727 solid;
+}
+.searchlistbox{
+	width: 80vw;
+    max-width: 800px;
+    text-align: center;
+    padding: 0;
+    margin: auto;
+    margin-top: -10px;
 }
 
-.searchList{
-    width: 60vw;
+input::placeholder{
+	font-size: 15px;
+	color: #747474;
+}
+
+.searchBar:focus{
+	border: 2px #FF652F solid;
+}
+
+.searchlistbox{
+	width: 80vw;
+	text-align: center;
+	z-index: 3;
+}
+.searchlist{
+	padding: 0px;
+
+	position: absolute;
+	z-index: 500;
 }
 
 .searchItem{
-    width: 60vw;
-    height: 120px;
-    background-color: white;
-    border: 1px black solid; 
+	display: flex;
+    width: 80vw;
+    max-width: 800px;
+    height: 14vh;
+    min-height: 80px;
+    max-height: 100px;
+    background-color: white; 
+   	border-top: 0px;
+   	border-right: 1px #272727 solid;
+   	border-bottom: 0px #272727 solid;
+   	border-left: 1px #272727 solid;
+
 }
 
+.searchItemThumbnail{
+	height: 13vh;
+	min-height: 70px;
+	max-height: 90px;
+	width: 10vw;
+	min-width: 100px;
+	max-width: 150px;
+	align-self: center;
+	margin-left: 5px;
+}
+.searchItemTitle{
+	height: 13vh;
+	min-height: 70px;
+	max-height: 90px;
+	width: 40vw;
+	max-width: 6000px;
+	align-self: center;
+	margin-left: 5px;
+}
+.searchItemChannel{
+	display: inline-block;
+	align-self: flex-end;
+
+}
 .searchItem:hover {
-    border: 2px red solid;
-    background-color: rgba(255, 0 , 0, 0.5);
-    
+    border-color: rgba(90,185,234);
+    border-top-width: 1px;
+    background-color: rgba(90,185,234);
 }

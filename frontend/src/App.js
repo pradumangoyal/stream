@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 //import autorefresh from 'jwt-autorefresh'
 import VolumeControl from './components/volume_user';
@@ -70,21 +70,25 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <div className="logo_container"><img src={logo} className="App-logo" alt="logo" /></div>
+          <h1 className="App-title">Stream</h1>
+          <button onClick={this.logout} className="logout">LOGOUT</button>
         </header>
-        <TitleName /><br />
-        <DJName />
-        <VolumeControl conn={this.connection}/>
-        <SeekControl conn={this.connection}/>
-        <PlayControl conn={this.connection}/>
-        <MuteControl conn={this.connection}/>
-        <SearchBar conn={this.connection}/>
+ <div className="song_playing"><TitleName />
+</div>
+
+        <div className="searchbox"><SearchBar conn={this.connection}/></div>
+
+        <div className="djc"><DJImage /></div>
         <MessageAlert />
-        <DJImage />
-        <div onClick={this.handleClick} label="hi" id="cont">Hi</div>
         <Message />
-        <button onClick={this.logout}>LOGOUT</button>
+        <footer className="App-footer">
+        <div className="seek"><SeekControl conn={this.connection}/></div>
+        <div className="volume"><VolumeControl conn={this.connection}/></div>
+        <div className="play"><PlayControl conn={this.connection}/></div>
+        <div className="mute"><MuteControl conn={this.connection}/></div>
+        <div onClick={this.handleClick} label="hi" id="cont">Hi</div>
+        </footer>
       </div>
     );
   }

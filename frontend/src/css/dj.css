@@ -1,41 +1,18 @@
-@font-face {
-    font-family: dj;
-    src: url('https://fonts.googleapis.com/css?family=Merienda');
+.djreaction{
+	position: relative;
+	text-align: center;
+	top: -310px;
+    left: -25px;
 }
 .djcontainer{
-    background-color: white;
-    width: 350px;
-    height: 300px;
-    text-align: center;
+	height: 325px;
 }
-.djcontainer img{
-    width: 350px;
-    height: 300px;
-}
-.djreaction{
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    z-index: 2;
-    position: relative;
-    left: -20px;
-    top: -300px;
-    width: ;
-    z-index: 3;
-}
-.djreaction img{
-    width: 88px;
-    height: 88px;
-    z-index: 5;
+.dj{
+	height: 300px;
 }
 .djname{
-    display: inline-block;
-    text-align: center;
-    z-index: 2;
-    position: relative;
-    left: -250px;
-    top: -50px;
-    width: 30%;
-    font-family: dj;
-    font-size: 25px; 
+	position: relative;
+	top: -100px;
+	color: #14A76C;
+	font-size: 40px;
 }

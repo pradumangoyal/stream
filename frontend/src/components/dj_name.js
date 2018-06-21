@@ -38,7 +38,7 @@ export default class DJName extends Component {
   render() {
 
     return (
-       <span>{this.state.dj}</span>
+       <span>DJ{this.state.dj}</span>
     );
   }
 }

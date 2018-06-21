@@ -38,7 +38,7 @@ handleClick = () => {
 
 render(){
     return(
-        <span onClick={this.handleClick} className="emoji_container"><img src={this.state.path} width="50px" height="50" alt={this.props.reaction} /></span>
+        <span onClick={this.handleClick} className="emoji_container"><img src={this.state.path} width="50px" height="50" alt={this.props.reaction} className="emojis"/></span>
 );
 }
 }

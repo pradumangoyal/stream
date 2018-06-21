@@ -34,9 +34,9 @@ export default class SearchBar extends Component {
   render() {
 
     return (
-        <div>
-            <label><input type="search" onChange={this.handleChange} className="searchBar" id="searchBar"/></label>
-            <div onClick={this.handleClick}>
+        <div className="container">
+            <label><input type="search" onChange={this.handleChange} placeholder="Search" className="searchBar" id="searchBar"/></label>
+            <div  className="searchlistbox" onClick={this.handleClick}>
             <VideoList videos={this.state.videos} />
         </div></div>
     );
