@@ -46,7 +46,6 @@ import DJImage from './components/dj'
 class App extends Component {
   constructor(props){
      super(props) ;
-    this.handleClick = this.handleClick.bind(this);
      this.logout = this.logout.bind(this);  
    }
   componentDidMount(){
@@ -60,11 +59,6 @@ class App extends Component {
     e.preventDefault();
     localStorage.removeItem("persist:polls");
     window.location.reload();
-    }
-
-    handleClick(e){
-        var a = document.getElementById('cont')
-        console.log('hey!' + a.getAttribute('label'));
     }
   render() {
     return (
@@ -83,11 +77,10 @@ class App extends Component {
         <MessageAlert />
         <Message />
         <footer className="App-footer">
-        <div className="seek"><SeekControl conn={this.connection}/></div>
-        <div className="volume"><VolumeControl conn={this.connection}/></div>
         <div className="play"><PlayControl conn={this.connection}/></div>
+        <div className="seek"><SeekControl conn={this.connection}/></div>
         <div className="mute"><MuteControl conn={this.connection}/></div>
-        <div onClick={this.handleClick} label="hi" id="cont">Hi</div>
+        <div className="volume"><VolumeControl conn={this.connection}/></div>
         </footer>
       </div>
     );

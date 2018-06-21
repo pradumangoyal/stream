@@ -55,7 +55,8 @@ export default class VolumeControl extends Component {
 
     return (
        <div>
-            <label>Volume: {this.state.volume} <input type="range" min="0" max="100" value={this.state.volume} onChange={this.handleChange} /></label>
+            <label><input type="range" min="0" max="100" value={this.state.volume} onChange={this.handleChange} /></label>
+            <p>{this.state.volume}</p>
        </div> 
     )
   }

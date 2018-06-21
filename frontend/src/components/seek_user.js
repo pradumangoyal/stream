@@ -7,6 +7,7 @@ export default class SeekControl extends Component {
         this.state = ({seek: "", duration: ""});
         this.handleChange = this.handleChange.bind(this);
         this.fetchSeek = this.fetchSeek.bind(this);
+        this.HHMMSS = this.HHMMSS.bind(this);
     }
   
   componentDidMount(){
@@ -23,6 +24,18 @@ export default class SeekControl extends Component {
     };
 }}
 
+
+HHMMSS = (sec) => {
+    var sec_num = parseInt(sec, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
+}
   handleChange = (event) => {
            var ref = JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token'];
             var data_format =  {
@@ -58,8 +71,8 @@ export default class SeekControl extends Component {
 
     return (
        <div>
-            <label>Seek: 0 <input type="range" min="0" max={this.state.duration} value={this.state.seek} onChange={this.handleChange} />{this.state.duration}</label>
-            <p>{this.state.seek}</p>
+            <input type="range" min="0" max={this.state.duration} value={this.state.seek} onChange={this.handleChange} className="seekbar"/>
+            <p>{this.HHMMSS(this.state.seek)}/{this.HHMMSS(this.state.duration)}</p>
        </div> 
     )
   }

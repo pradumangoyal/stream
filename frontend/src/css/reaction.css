@@ -7,6 +7,9 @@ padding: 2px;
 border: solid white 1px;
 border-radius: 5px;
 }
+.emojis{
+  transition-duration: 0.5s;
+}
 .emojis:hover{
 	transform: translateY(-20px);
 }
