@@ -10,7 +10,7 @@ export default class MessageAlert extends Component {
 
   componentDidMount(){
         this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = (e) => {console.log('Message Reciever Socket connected Successfully')
+        this.connection.onopen = (e) => {console.log('Message Reciever Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
@@ -31,7 +31,7 @@ export default class MessageAlert extends Component {
 });
  
 }};
-}}
+}
   
   componentWillUnmount() {
         this.connection.onclose  = function(e){

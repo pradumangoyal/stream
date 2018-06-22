@@ -19,7 +19,7 @@ export default class TitleName extends Component {
   componentDidMount(){
         this.fetchSongData();
         this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = (e) => {console.log('Title Socket connected Successfully')
+        this.connection.onopen = (e) => {console.log('Title Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
@@ -37,7 +37,7 @@ export default class TitleName extends Component {
                 timer: 4500,
 });
     }};
-}}
+}
   
   componentWillUnmount() {
         this.connection.onclose  = function(e){

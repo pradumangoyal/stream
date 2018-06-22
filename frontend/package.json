@@ -11,6 +11,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-flash-message": "^1.0.2",
+    "react-player": "^1.6.4",
     "react-redux": "^5.0.7",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "1.1.4",

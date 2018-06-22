@@ -14,7 +14,7 @@ export default class MessageAlertImage extends Component {
     }
   componentDidMount(){
         this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = (e) => {console.log('Message Reciever Socket connected Successfully')
+        this.connection.onopen = (e) => {console.log('Message Reciever Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
@@ -27,7 +27,7 @@ export default class MessageAlertImage extends Component {
             this.show();
             setTimeout(this.hide, 15000);
 }};
-}}
+}
   
   componentWillUnmount() {
         this.connection.onclose  = function(e){

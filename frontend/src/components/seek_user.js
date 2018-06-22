@@ -13,7 +13,7 @@ export default class SeekControl extends Component {
   componentDidMount(){
         this.fetchSeek();
         this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = (e) => {console.log('Seek Socket connected Successfully')
+        this.connection.onopen = (e) => {console.log('Seek Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
@@ -22,7 +22,7 @@ export default class SeekControl extends Component {
         (seek === "") ? void(0) : this.setState({ seek: seek });
         (duration === "" ) ? void(0) : this.setState({ duration: duration});
     };
-}}
+}
 
 
 HHMMSS = (sec) => {

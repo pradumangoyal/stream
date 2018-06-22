@@ -19,7 +19,7 @@ export default class DJName extends Component {
   componentDidMount(){
         this.fetchDJData();
         this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = (e) => {console.log('DJ Socket connected Successfully')
+        this.connection.onopen = (e) => {console.log('DJ Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
@@ -27,7 +27,7 @@ export default class DJName extends Component {
         var url = data['url'];
         (url === "") ? void(0) : this.setState({ dj: dj })
     };
-}}
+}
   
   componentWillUnmount() {
         this.connection.onclose  = function(e){

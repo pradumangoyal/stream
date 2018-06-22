@@ -39,14 +39,14 @@ export default class VolumeControl extends Component {
   componentDidMount(){
         this.fetchPlayData();
         this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = (e) => {console.log('Play/Pause Socket connected Successfully')
+        this.connection.onopen = (e) => {console.log('Play/Pause Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
         var play = data['play'];
         (play === "") ? void(0) : this.setState({ play: play })
     };
-}}
+}
   
   componentWillUnmount() {
         this.connection.onclose  = function(e){
