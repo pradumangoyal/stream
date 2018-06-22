@@ -10,13 +10,14 @@ import configureStore from './store'
 import {Route, Switch} from 'react-router'
 import Login from './containers/Login';
 import PrivateRoute from './containers/PrivateRoute';
-
+import Stream from './components/stream'
 const history = createHistory()
 const store = configureStore(history)
 ReactDOM.render((
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
+        <Route exact path="/stream/" component={Stream} />
         <Route exact path="/login/" component={Login} /> 
         <PrivateRoute path="/" component={App} />
       </Switch>

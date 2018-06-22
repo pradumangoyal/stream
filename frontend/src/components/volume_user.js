@@ -10,7 +10,7 @@ export default class VolumeControl extends Component {
     }
 
   handleChange = (event) => {
-           var ref = JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token'];
+          var ref = JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token'];
             var data_format =  {
             'url': "",
             'volume': event.target.value,
@@ -21,8 +21,7 @@ export default class VolumeControl extends Component {
             'message': "",
             'dj': "",
             'title': "",
-            'token': ref
-        }
+            'token': ref        }
             this.connection.send(JSON.stringify(data_format));
 }
   fetchVolumeData(){

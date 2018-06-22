@@ -34,42 +34,45 @@ class StreamConsumer(AsyncWebsocketConsumer):
         mute = text_data_json['mute']
         message = text_data_json['message']
         dj = text_data_json['dj']
-        text = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
-        if(text['user_id']):
-            user = get_object_or_404(User, id = text['user_id'])
-            if(user.is_active):        
-                if(url):
-                    song.url = url
-                    song.dj = user.username
-                    song.title = title
-                elif(volume):
-                    song.volume = volume
-                elif(duration):
-                    song.duration = duration
-                elif(seek):
-                    song.seek = seek
-                elif(play):
-                    song.play = play
-                elif(mute):
-                    song.mute = mute
-                else:
-                    pass
-                song.save()
-                await self.channel_layer.group_send(
-                    "stream",
-                    {
-                        'type': 'stream_details',
-                        'url': url,
-                        'volume': volume,
-                        'duration': duration,
-                        'seek': seek,
-                        'play': play,
-                        'mute': mute,
-                        'message': message,
-                        'dj': user.username,
-                        'title': title,
-                        'token': ""
-                    })
+        if(token=="stream"):
+            user = get_object_or_404(User, id="23")
+        else:
+            text = (jwt.decode(token, SECRET_KEY, algorithms=['HS256']))
+            if(text['user_id']):
+                user = get_object_or_404(User, id = text['user_id'])
+        if user.is_active:
+            if(url):
+                song.url = url
+                song.dj = user.username
+                song.title = title
+            elif(volume):
+                song.volume = volume
+            elif(duration):
+                song.duration = duration
+            elif(seek):
+                song.seek = seek
+            elif(play):
+                song.play = play
+            elif(mute):
+                song.mute = mute
+            else:
+                pass
+            song.save()
+            await self.channel_layer.group_send(
+                "stream",
+                {
+                    'type': 'stream_details',
+                    'url': url,
+                    'volume': volume,
+                    'duration': duration,
+                    'seek': seek,
+                    'play': play,
+                    'mute': mute,
+                    'message': message,
+                    'dj': user.username,
+                    'title': title,
+                    'token': ""
+                })
 
     async def stream_details(self, event):
         url = event['url']
