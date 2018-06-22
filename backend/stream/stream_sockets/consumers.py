@@ -44,6 +44,8 @@ class StreamConsumer(AsyncWebsocketConsumer):
             if(url):
                 song.url = url
                 song.dj = user.username
+                song.seek = '0'
+                song.play = '1'
                 song.title = title
             elif(volume):
                 song.volume = volume

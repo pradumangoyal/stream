@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import ReactPlayer from 'react-player'
+import MessageAlert from './message_alert';
+import TitleName from './title_name';
+import '../css/stream.css';
+import logo from '../logo.png';
 export default class Stream extends Component{
 constructor(props){
 super(props);
@@ -151,8 +155,13 @@ componentDidMount(){
   }
 render(){
     return(
-        <div>
+        <div className="Stream">
+        <header className="App-header2">
+          <div className="logo_container"><img src={logo} className="App-logo" alt="logo" /></div>
+          <h1 className="App-title">Stream</h1>
+         </header>
         	<ReactPlayer 
+        	className="player"
         	ref={this.ref} 
         	url={this.state.url} 
         	playing={this.state.play === 'true'} 
@@ -165,6 +174,8 @@ render(){
         	onDuration={this.initialize}
         	onProgress={this.progress}
         	/>
+        	<MessageAlert />
+        	<TitleName />
         </div>
 )
 }}

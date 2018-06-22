@@ -48,7 +48,7 @@ export default class TitleName extends Component {
   render() {
 
     return (
-       <span>{this.state.title} <span id="waste"></span></span>
+       <span className="djalert">{this.state.title} <span id="waste"></span></span>
     );
   }
 }
