@@ -26,8 +26,8 @@ export default class SearchBar extends Component {
   
   handleClick = () => {
     this.setState({ videos: []});
-    var a = document.getElementById('searchBar');
-    a.value="";
+    var a = document.getElementById('searchBar')
+    a.value = "";
     }
   
 
@@ -35,8 +35,8 @@ export default class SearchBar extends Component {
 
     return (
         <div className="container">
-            <label><input type="search" onChange={this.handleChange} placeholder="Search" className="searchBar" id="searchBar"/></label>
-            <div  className="searchlistbox" onClick={this.handleClick}>
+            <label><input type="search" onChange={this.handleChange} placeholder="Search" className="searchBar" id="searchBar" /></label>
+            <div  className="searchlistbox" id="searchlistbox" onClick={this.handleClick}>
             <VideoList videos={this.state.videos} />
         </div></div>
     );

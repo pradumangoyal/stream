@@ -12,7 +12,7 @@
 
 .App-header2 {
 	position: fixed;
-  background-color: #272727;
+  background-color: #0e1111;
   min-height: 100px;
   height: 100px;
   max-width: 100vw;
@@ -36,7 +36,7 @@
     justify-content: space-around;
     height: 100px;
     min-height: 100px;
-    background-color: #FF652F;
+    background-color: #7fffd4;
 }
 .App-title {
   align-self: center;
@@ -44,7 +44,7 @@
   margin-top: 7px;
   font-family: 'Berkshire Swash', cursive;
   font-size: 45px;
-  color:#FF652F;
+  color:#7fffd4;
 }
 
 .App-intro {

@@ -55,6 +55,9 @@ class App extends Component {
   componentWillUnmount(){
     this.connection.onclose = () => {console.error('WebSocket Closed!')};
     }
+    handleClick = () => {
+    this.setState({ videos: []});
+    }
   logout(e){
     e.preventDefault();
     localStorage.removeItem("persist:polls");
