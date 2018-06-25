@@ -3,7 +3,6 @@ import React, {Component} from 'react'
 export default class VideoItem extends Component {
 constructor(props){
     super(props);
-    this.handleClick = this.handleClick.bind(this);
 }
 
 componentDidMount(){
