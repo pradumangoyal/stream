@@ -11,12 +11,14 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny
+from rest_framework.views import APIView
 from . import serializers
 from django.conf import settings
 from profile_pic.forms import ImageForm
 from django.core.files.storage import FileSystemStorage
 from stream_sockets.serializers import SongSerializer
 from stream_sockets.models import Song_model
+from .serializers import UserRegSerializer
 
 def signup(request):
     if request.method == 'POST':
@@ -134,3 +136,14 @@ def change_password(request):
         'form1': ImageForm(),
         'form2': form
     })
+
+class UserCreate(APIView):
+    permission_classes = (AllowAny, ) 
+    
+    def post(self, request, format='json'):
+        serializer = UserRegSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            if user:
+                return Response(serializer.data, status=status.HTTP_201_CREATED)        
+        return Response(serializer.errors, status=status.HTP_400_BAD_REQUEST)
