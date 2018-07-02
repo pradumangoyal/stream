@@ -13,6 +13,8 @@ export default class Register extends Component {
         this.setState({[event.target.name]: event.target.value});
     }
     handleSubmit = (event) => {
+        document.getElementById('error').style.visibility = 'hidden';
+        document.getElementById('success').style.visibility = 'hidden';
         if(this.state.password1 == this.state.password2){
             fetch('http://localhost:8000/api/register/', {
             method: 'POST',
@@ -26,10 +28,14 @@ export default class Register extends Component {
             })
         }).then((response) => {
             if(response['status']<300 && response['status']>=200 ){
+                document.getElementById('error').style.visibility = 'hidden';
+                document.getElementById('success').style.visibility = 'visible';
                 this.setState({success: "The Account("+this.state.username+") Created Successfully. Wait For Admin to Approve Your Account", error:[]});
                 this.setState({password1: '', password2: '', });
         }
             else{
+                    document.getElementById('success').style.visibility = 'hidden';
+                    document.getElementById('error').style.visibility = 'visible';
                     this.setState({error: [], success: ""});
                     this.state.error.push('User was not created.');
                     if(this.state.password1.length<8)
@@ -40,6 +46,8 @@ export default class Register extends Component {
             }
         )}
         else{
+           document.getElementById('success').style.visibility = 'hidden';
+           document.getElementById('error').style.visibility = 'visible';
             this.setState({success:"", error: ['User was not created' ,'Password Does not Match.']});
             this.setState({password1: '', password2: '', });
         }
@@ -54,7 +62,7 @@ export default class Register extends Component {
         </header>
         <div className='regform-container'>
           <h1>Register</h1>
-          <div className="success">{this.state.success}</div>
+          <div className="success" id="success">{this.state.success}</div>
           <form onSubmit={this.handleSubmit}>
             <label>
                 Username: <br /><input type="text" name="username" value={this.state.username} placeholder="Username" onChange={this.handleChange} required/>
@@ -65,7 +73,7 @@ export default class Register extends Component {
             <label>
                 Confirm_Password: <br /><input type="password" name="password2" value={this.state.password2} placeholder="Re-enter Your Password" onChange={this.handleChange} required />
             </label>
-            <div className="error">{this.state.error}</div>
+            <div className="error" id='error' ><Error errors={this.state.error} /></div>
             <button type="submit">Submit</button>
           </form>
           <div>Have an Account?<a href="./login">Login</a></div>

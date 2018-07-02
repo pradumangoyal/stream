@@ -81,10 +81,25 @@ min-height: 600px;
 
 .regform-container{
   margin: 0 auto;
-  margin-top: 15vh;
+  margin-top: 3vh;
   background-color: #E8EBEF;
   border: 2px #E8EBEF solid;
   border-radius: 10px;
+}
+.regform-container button{
+  transition-duration: 1s;
+  background-color: #007bff;
+  border: #007bff;
+  color: white;
+  padding: 8px;
+  border-radius: 3px;
+  font-size: 20px;
+
+}
+
+.regform-container button: hover{
+  background-color: #2025b2;
+  border-color: #2025b2;
 }
 .regform-container form{
   text-align: center;
@@ -93,5 +108,28 @@ min-height: 600px;
   text-align: left;
 }  
 .success{
-
+  visibility: hidden;
+  text-align: left;
+  background-color: #d7f8da;
+  border: 1px solid #c6f5cb;
+  border-radius: 2px;
+  width: 75vw;
+  max-width: 650px;
+  margin-top: 5px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  color: #1c7224;
+}
+.error{
+  visibility: hidden;
+  text-align: left;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 2px;
+  width: 75vw;
+  max-width: 650px;
+  margin-top: 5px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  color: #721c24;
 }
