@@ -36,7 +36,7 @@
     justify-content: space-around;
     height: 100px;
     min-height: 100px;
-    background-color: #7fffd4;
+    background-color: #FFC400;
 }
 .App-title {
   align-self: center;
@@ -44,7 +44,7 @@
   margin-top: 7px;
   font-family: 'Berkshire Swash', cursive;
   font-size: 45px;
-  color:#7fffd4;
+  color:#FFC400;
 }
 
 .App-intro {

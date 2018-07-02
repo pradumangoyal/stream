@@ -32,7 +32,7 @@ input::placeholder{
 }
 
 .searchBar:focus{
-	border: 2px #7fffd4 solid;
+	border: 2px #FFC400 solid;
 }
 
 .searchlistbox{
@@ -55,9 +55,9 @@ input::placeholder{
     max-height: 100px;
     background-color: white; 
    	border-top: 0px;
-   	border-right: 1px #7fffd4 solid;
-   	border-bottom: 0px #7fffd4 solid;
-   	border-left: 1px #7fffd4 solid;
+   	border-right: 1px #FFC400 solid;
+   	border-bottom: 0px #FFC400 solid;
+   	border-left: 1px #FFC400 solid;
    	transition-duration: 0.5s;
    	cursor: default;
 
@@ -90,5 +90,5 @@ input::placeholder{
 .searchItem:hover {
     border-color: rgba(90,185,234);
     border-top-width: 1px;
-    background-color: rgba(90,185,234);
+    background-color: #FFC400;
 }

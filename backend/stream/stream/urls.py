@@ -32,7 +32,7 @@ from .api import EchoView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/', views.signup, name='signup'),
-    path('api/register', views.UserCreate.as_view(), name='create user'),
+    path('api/register/', views.UserCreate.as_view(), name='create user'),
     path('login/', auth_views.login, {'template_name': 'stream/login.html'}, name='login'),
     path('logout/', auth_views.logout, name='logout'),
     path('api/user/<str:username>/', views.user_detail, name='active_toggle'),

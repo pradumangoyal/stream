@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-
+import logo from '../logo.png';
 import LoginForm from '../components/LoginForm'
 import {login} from  '../actions/auth'
 import {authErrors, isAuthenticated} from '../reducers'
@@ -13,9 +13,14 @@ const Login = (props) => {
     )
   } else {
     return (
+      <div className="body" >
+      <header className="App-header-login">
+          <div className="logo_container"><img src={logo} className="App-logo" alt="logo" /></div>
+          <h1 className="App-title">Stream</h1>
+        </header>
       <div className="login-page">
         <LoginForm {...props}/>
-      </div>
+      </div></div>
     )
 }
 }

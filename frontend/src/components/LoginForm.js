@@ -30,6 +30,7 @@ export default class LoginForm extends Component {
     const errors = this.props.errors || {}
 
     return (
+      <div className="form-container">
       <Jumbotron className="container">
         <Form onSubmit={this.onSubmit}>
           <h1>Authentication</h1>
@@ -49,7 +50,8 @@ export default class LoginForm extends Component {
               Log In
           </Button>
         </Form>
-      </Jumbotron>
+        <div>Dont Have an account Yet? Apply <a href="./register">Here</a> to Be an IMG DJ</div>
+      </Jumbotron></div>
     )
   }
 }
