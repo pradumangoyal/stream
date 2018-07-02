@@ -20,5 +20,6 @@ h1{
     border-radius: 5px;
     border: 1px white;
     color: white;
+    cursor: move;
 }
 
