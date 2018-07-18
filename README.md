@@ -12,8 +12,8 @@ Stream aims to be a webapp using Django, DRF, and Django Channels as backend and
 # Build and Run
 
 1. Clone the Repository
-'''$ git clone [https://github.com/pradumangoyal/stream.git](https://github.com/pradumangoyal/stream.git)
-$ cd stream'''
+''' $ git clone [https://github.com/pradumangoyal/stream.git](https://github.com/pradumangoyal/stream.git)
+$ cd stream '''
 2. Make virtual environment setup
 '$ sudo apt-get install python3-venv'
 '$ python3 -m venv <env_name>'
