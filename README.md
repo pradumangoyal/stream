@@ -47,11 +47,11 @@ $ npm start
 8. Browser part
     1. Open localhost:3000/stream on a window preferably on the PC connected by speakers (Song will play on this window)
     2. Go to localhost:3000 and make a new user before using it you have to ## approve the user
-      1. Go to localhost:8000 and login using admin user (if not make a superuser using shell)
-        1. ```shell
+        Go to localhost:8000 and login using admin user (if not make a superuser using shell)
+        ```shell
         $ cd ../backend/stream
         $ python manage.py createsuperuser
         ```
-      2. Also make a user with username 'stream_mainpc'
+    2. Also make a user with username 'stream_mainpc'
     3. Using Drag and Drop menu there approve users.
  3. Login using the user you have created and enjoy the streaming and best use of common speakers at your workplace or home.
