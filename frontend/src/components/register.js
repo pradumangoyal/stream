@@ -39,7 +39,10 @@ export default class Register extends Component {
                     this.setState({error: [], success: ""});
                     this.state.error.push('User was not created.');
                     if(this.state.password1.length<8)
-                    {this.state.error.push('Password should be of minimum 8 charachters')}        
+                    {this.state.error.push('Password should be of minimum 8 charachters')}     else
+                    {this.state.error.push('User with this username('+this.state.username+') already exists.')
+                    this.setState({username: ""})
+                    }   
                     this.setState({success: ""});
                     this.setState({password1: '', password2: '', });
                 }
