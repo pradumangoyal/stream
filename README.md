@@ -28,7 +28,7 @@ $ source <env_name>/bin/activate
 4. Install requirements
 ```shell
 $ cd ./backend/sttream/
-$ pip install requirement.txt
+$ pip install -r requirement.txt
 ```
 5. Migrate Files
 ```shell
