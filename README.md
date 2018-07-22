@@ -32,8 +32,8 @@ $ pip install -r requirement.txt
 ```
 5. Migrate Files
 ```shell
-$ python manage.py migrate
 $ python manage.py makemigrations stream
+$ python manage.py migrate
 ```
 6. Run the app(on localhost:8000)
 ```shell
