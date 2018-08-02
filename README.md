@@ -37,7 +37,7 @@ $ python manage.py migrate
 ```
 6. Run the app(on localhost:8000)
 ```shell
-$ docker run -p 6379:6379 -d redis:2.83103c3
+$ docker run -p 6379:6379 -d redis:2.8
 $ python manage.py runserver
 ```
 7. Run react
