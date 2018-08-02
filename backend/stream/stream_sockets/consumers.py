@@ -35,7 +35,7 @@ class StreamConsumer(AsyncWebsocketConsumer):
         message = text_data_json['message']
         dj = text_data_json['dj']
         if(token=="stream"):
-            user = get_object_or_404(User, id="23")
+            user = get_object_or_404(User, username="stream_mainpc")
         else:
             text = (jwt.decode(token, SECRET_KEY, algorithms=['HS256']))
             if(text['user_id']):
