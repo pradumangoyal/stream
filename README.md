@@ -18,7 +18,7 @@ $ cd stream
 ```
 2. Make virtual environment setup
 ```shell
-$ sudo apt-get install python3-venv'
+$ sudo apt-get install python3-venv
 $ python3 -m venv <env_name>
 ```
 3. Activate your environment
