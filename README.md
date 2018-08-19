@@ -18,7 +18,7 @@ $ cd stream
 ```
 2. Make virtual environment setup
 ```shell
-$ sudo apt-get install python3-venv'
+$ sudo apt-get install python3-venv
 $ python3 -m venv <env_name>
 ```
 3. Activate your environment
@@ -32,7 +32,7 @@ $ pip install -r requirement.txt
 ```
 5. Migrate Files
 ```shell
-$ python manage.py makemigrations stream
+$ python manage.py makemigrations
 $ python manage.py migrate
 ```
 6. Make a Superuser with username 'stream_mainpc'(keep this in mind)
@@ -45,6 +45,8 @@ $ python manage.py shell
 > from stream_sockets.models import Song_model
 > Song_model.objects.create()
 ```
+Press Ctrl-D
+
 6. Run the app(on localhost:8000)
 ```shell
 $ docker run -p 6379:6379 -d redis:2.8
