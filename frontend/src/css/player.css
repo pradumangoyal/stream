@@ -1,11 +1,13 @@
 .playercontainer .main{
     width: calc(100vw - 18.75rem);
     height: 100vh;
+    color: #D2CEE4;
+    text-align: center;
 }
 .playercontainer .side-nav{
     height: 100vh;
 }
 .playercontainer .player{
     width: calc(100vw - 18.75rem) !important;
-    height: 100vh !important;
+    height: calc(100vh - 1.5rem) !important;
 }

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import ReactPlayer from 'react-player'
+import TitleName from './title_name'
+import MessageAlert from './message_alert'
 import '../css/player.css'
 import DJName from './dj_name';
 export default class Stream extends Component{
@@ -167,6 +169,7 @@ render(){
         	onDuration={this.initialize}
         	onProgress={this.progress}
         	/>
+            <TitleName />
         </div>
         <div className="side-nav" id="feed">
           <div className="djname"><i className="fas fa-headphones icon"></i>Activity Feed
@@ -175,6 +178,7 @@ render(){
           <div className="ui divider line"></div>
           <div className="djname grey">Played by: <DJName /></div>
           <div id="activitycardgroup">
+          <MessageAlert />
           </div>
         </div>
       </div>
