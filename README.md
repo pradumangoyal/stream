@@ -13,7 +13,7 @@ Stream aims to be a webapp using Django, DRF, and Django Channels as backend and
 
 1. Clone the Repository
 ```shell
-$ git clone [https://github.com/pradumangoyal/stream.git](https://github.com/pradumangoyal/stream.git)
+$ git clone https://github.com/pradumangoyal/stream.git
 $ cd stream
 ```
 2. Make virtual environment setup
@@ -27,13 +27,23 @@ $ source <env_name>/bin/activate
 ```
 4. Install requirements
 ```shell
-$ cd ./backend/sttream/
+$ cd ./backend/stream/
 $ pip install -r requirement.txt
 ```
 5. Migrate Files
 ```shell
 $ python manage.py makemigrations stream
 $ python manage.py migrate
+```
+6. Make a Superuser with username 'stream_mainpc'(keep this in mind)
+```shell
+$ python manage.py createsuperuser
+```
+6. Make a necessary entry in Song_model
+```shell
+$ python manage.py shell
+> from stream_sockets.models import Song_model
+> Song_model.objects.create()
 ```
 6. Run the app(on localhost:8000)
 ```shell
@@ -43,16 +53,11 @@ $ python manage.py runserver
 7. Run react
 ```shell
 $ cd ../../frontend
+$ npm install
 $ npm start
 ```
 8. Browser part
     1. Open localhost:3000/stream on a window preferably on the PC connected by speakers (Song will play on this window)
-    2. Go to localhost:3000 and make a new user before using it you have to ## approve the user
-        Go to localhost:8000 and login using admin user (if not make a superuser using shell)
-        ```shell
-        $ cd ../backend/stream
-        $ python manage.py createsuperuser
-        ```
-    2. Also make a user with username 'stream_mainpc'
-    3. Using Drag and Drop menu there approve users.
+    2. Go to localhost:3000 and make a new user before using it you have to approve the user
+    3. Using Drag and Drop menu at localhost:8000/ approve users.
  3. Login using the user you have created and enjoy the streaming and best use of common speakers at your workplace or home.
