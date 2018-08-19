@@ -15,7 +15,7 @@ const Login = (props) => {
     return (
       <div className="body" >
       <header className="App-header-login">
-          <div className="logo_container"><img src={logo} className="App-logo" alt="logo" /></div>
+          <div className="logo_container"></div>
           <h1 className="App-title">Stream</h1>
         </header>
       <div className="login-page">

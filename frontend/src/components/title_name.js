@@ -29,15 +29,27 @@ export default class TitleName extends Component {
             void(0)
         else{
             this.setState({ title: title , dj: dj});
-            swal({
-                title: this.state.title, 
-                text:" played by DJ"+this.state.dj,
-                icon: disc, 
-                button: "Cool",
-                timer: 4500,
-});
+            let div = document.createElement('div');
+            div.className = 'activitycard';
+            let imagecard = document.createElement('span');
+            imagecard.className = 'imagecard';
+            let icon = document.createElement('i');
+            icon.className = 'music icon';
+            imagecard.appendChild(icon)
+            div.appendChild(imagecard);
+            let spanusername = document.createElement('span');
+            spanusername.className = 'username';
+            spanusername.innerHTML = this.state.dj;
+            div.appendChild(spanusername);
+            let span=document.createElement('span');
+            span.innerHTML=' played<br>';
+            div.appendChild(span);
+            let detailspan = document.createElement('span');
+            detailspan.className = 'detail';
+            detailspan.innerHTML=this.state.title;
+            div.appendChild(detailspan);document.getElementById('activitycardgroup').appendChild(div);
+        }
     }};
-}
   
   componentWillUnmount() {
         this.connection.onclose  = function(e){

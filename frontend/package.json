@@ -21,6 +21,8 @@
     "redux-api-middleware": "^2.0.0-beta.3",
     "redux-persist": "^5.0.0-beta.7",
     "redux-persist-transform-filter": "0.0.17",
+    "semantic-ui-css": "^2.3.3",
+    "semantic-ui-react": "^0.82.1",
     "sweetalert": "^2.1.0",
     "youtube-api-search": "0.0.5"
   },

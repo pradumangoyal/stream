@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import OptionImage from './option_image';
 
-export default class VolumeControl extends Component {
+export default class PlayControl extends Component {
   constructor(props){
         super(props);
         this.state = ({play: ""});
@@ -57,9 +57,9 @@ export default class VolumeControl extends Component {
   render() {
 
     return (
-       <div onClick={this.handleClick} label={this.state.play} id="play-control">
+       <span onClick={this.handleClick} label={this.state.play} id="play-control">
             <OptionImage type="control" source={this.state.play === "1" ? "pause" : "play" } />
-       </div> 
+       </span> 
     )
   }
 }

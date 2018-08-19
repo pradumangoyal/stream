@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import VideoItem from './videoitem'
-import { Card } from 'semantic-ui-react'
-export default class VideoList extends Component{
+import TrendingItem from './trendingitem'
+export default class TrendingList extends Component{
 constructor(props){
     super(props);
 }
@@ -10,9 +9,9 @@ componentDidMount(){
 }
 render(){
 return (
-    <div className="searchlist" id="searchlist">
+    <div className="searchlist trendinglist" id="searchlist">
       {this.props.videos.map(video =>( 
-        <VideoItem key={video.id.videoId} video={video} conn={this.connection}/>
+        <TrendingItem key={video.snippet.resourceId.videoId} video={video} conn={this.connection}/>
      ))}
     </div>
 );

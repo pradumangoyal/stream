@@ -1,0 +1,52 @@
+.mcard{
+    display: inline-block;
+    width: 15rem;
+    overflow: hidden;
+    border-radius: 0;
+}
+.mcard .header{
+    font-size: 1rem !important;
+    font-weight: 600;
+    color:white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 2rem;
+    line-height: 1.3em;
+}
+
+.trending{
+    display: block;
+    margin: 0 !important;
+    padding-top: 5vh;
+    padding-left: 5rem !important;
+    color: #D2CEE4;
+    font-size: 1.5rem;
+    padding-left: 2rem !important;
+}
+
+.mcard .image{
+    height: 12rem;
+    border-radius: 0;
+    background: transparent;
+    vertical-align: middle;
+}
+.mcard .meta{
+    line-height: 1.2em;
+    color: #D2CEE4;
+}
+
+.trendinglist{
+    width: 360rem;
+    padding-bottom: 1rem;
+}
+.trending .heading{
+    margin-top: 0;
+    height: 2rem;
+    width: 80%;
+}
+.trendinglistbox{
+    overflow-x: auto;
+    margin-bottom: 0.5rem;
+    padding-top: 0.25rem;
+}

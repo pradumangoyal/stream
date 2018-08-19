@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import '../css/reaction.css';
 export default class MessageAlertImage extends Component {
   constructor(props){
         super(props);
@@ -31,7 +30,6 @@ export default class MessageAlertImage extends Component {
   
   componentWillUnmount() {
         this.connection.onclose  = function(e){
-        console.error('Title Socket Closed!!');
     };
     }
 

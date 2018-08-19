@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.png';
-import './App.css';
+import './css/App.css'
 //import autorefresh from 'jwt-autorefresh'
 import VolumeControl from './components/volume_user';
 import SeekControl from './components/seek_user';
@@ -12,37 +11,9 @@ import TitleName from './components/title_name'
 import Message from './components/message'
 import MessageAlert from './components/message_alert'
 import DJImage from './components/dj'
-//import OptionImage from './components/option_image';
-//const refresh = () => {
- // const init =  { method: 'POST'
-  //              , headers: { 'Content-Type': `application/x-www-form-urlencoded` }
-//                , body: `refresh_token=${localStorage.refresh_token}&grant_type=refresh_token`
-  //              }
-//  return fetch('http://localhost:8000/api/auh/token/obtain/', init)
-  //  .then(res => res.json())
-//    .then(({ token_type, access_token, expires_in, refresh_token }) => {
-     // localStorage.access_token = access_token
-      //localStorage.refresh_token = refresh_token
-    //  return access_token
-  //  })
-//}
-
-//const leadSeconds = () => {
-  /** Generate random additional seconds (up to 30 in this case) to append to the lead time to ensure multiple clients dont schedule simultaneous refresh */
-  //const jitter = Math.floor(Math.random() * 30)
- 
-  /** Schedule autorefresh to occur 60 to 90 seconds prior to token expiration */
- // return 60 + jitter
-//}
-
-//let start = autorefresh({ refresh, leadSeconds })
-//let cancel = () => {}
-//access_token => {
-//  console.log('refreshed');
-//  cancel()
-//  cancel = start(access_token)
-//};
-
+import Thumbnail from './components/thumbnail'
+import DurationControl from './components/duration'
+import Trending from './components/trending'
 class App extends Component {
   constructor(props){
      super(props) ;
@@ -63,28 +34,33 @@ class App extends Component {
     localStorage.removeItem("persist:polls");
     window.location.reload();
     }
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <div className="logo_container"><img src={logo} className="App-logo" alt="logo" /></div>
-          <h1 className="App-title">Stream</h1>
-          <button onClick={this.logout} className="logout">LOGOUT</button>
-        </header>
- <div className="song_playing"><TitleName />
-</div>
-
-        <div className="searchbox"><SearchBar conn={this.connection}/></div>
-
-        <div className="djc"><DJImage /></div>
-        <MessageAlert />
-        <Message />
-        <footer className="App-footer">
-        <div className="play"><PlayControl conn={this.connection}/></div>
-        <div className="seek"><SeekControl conn={this.connection}/></div>
-        <div className="mute"><MuteControl conn={this.connection}/></div>
-        <div className="volume"><VolumeControl conn={this.connection}/></div>
-        </footer>
+    <div className="App">
+    <div className="left-side-nav" id="reactions">
+      <Message /><MessageAlert />
+      <i  onClick={this.logout} className="logout fas fa-sign-out-alt" id="logout"></i>
+    </div>
+    <div className="main" id="screen">
+      <SearchBar /><Trending />
+    </div>
+    <div className="side-nav" id="feed">
+      <div className="djname"><i className="fas fa-headphones icon"></i>Activity Feed
+     
+      </div>
+      <div className="ui divider line"></div>
+      <div className="djname grey">Played by: <DJName /></div>
+      <div id="activitycardgroup">
+     
+      </div>
+    </div>
+    <div className="controls" id="footer">
+      <div className="currentsong"><Thumbnail /><TitleName /></div>
+      <div className="playcontrols"><div><SeekControl /></div><div><PlayControl /><DurationControl /></div></div>
+      <div className="volumecontrols"><VolumeControl /></div>
+    </div>
       </div>
     );
   }

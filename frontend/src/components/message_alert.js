@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import swal from 'sweetalert';
-import '../css/reaction.css';
 export default class MessageAlert extends Component {
   constructor(props){
         super(props);
@@ -9,7 +7,7 @@ export default class MessageAlert extends Component {
 
 
   componentDidMount(){
-        this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
+        this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
         this.connection.onopen = (e) => {console.log('Message Reciever Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {
@@ -18,17 +16,30 @@ export default class MessageAlert extends Component {
         var name = data['dj'];
         if(reaction === "") 
             void(0)
-        else{
-            var a = './images/reactions/' + reaction + '.gif';
+        else {
+            var a = './images/reactions/' + reaction + '.png';
             this.setState({ reaction: reaction , name: name, path: a});
-            swal({
-                title: this.state.name, 
-                text:" reacted "+ this.state.reaction,
-                icon: this.state.path, 
-                button: "OK!",
-                timer: 3000,
-                className: "messagealert",
-});
+            let div = document.createElement('div');
+            div.className = 'activitycard';
+            let imagecard = document.createElement('span');
+            imagecard.className = 'imagecard';
+            let icon = document.createElement('img');
+            icon.className = 'icon reacticon';
+            icon.src = a;
+            imagecard.appendChild(icon);
+            div.appendChild(imagecard);
+            let spanusername = document.createElement('span');
+            spanusername.className = 'username';
+            spanusername.innerHTML = this.state.name;
+            div.appendChild(spanusername);
+            let span=document.createElement('span');
+            span.innerHTML=' reacted ';
+            div.appendChild(span);
+            let detailspan = document.createElement('span');
+            detailspan.className = 'detail';
+            detailspan.innerHTML=this.state.reaction;
+            div.appendChild(detailspan);document.getElementById('activitycardgroup').appendChild(div);
+ 
  
 }};
 }

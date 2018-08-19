@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import ReactPlayer from 'react-player'
 import MessageAlert from './message_alert';
 import TitleName from './title_name';
-import '../css/stream.css';
 import logo from '../logo.png';
+import DJName from './dj_name';
 export default class Stream extends Component{
 constructor(props){
 super(props);
@@ -16,7 +16,7 @@ this.progress = this.progress.bind(this);
 }
 
 fetchData = () => {
-	 fetch('http://localhost:8000/api/song/').then((result) => { 
+	 fetch('http://'+window.location.hostname+':8000/api/song/').then((result) => { 
             return result.json();
         }).then((jsonResult) => {
             var url = "https://www.youtube.com/watch?v=" + jsonResult['url'];
@@ -174,8 +174,14 @@ render(){
         	onDuration={this.initialize}
         	onProgress={this.progress}
         	/>
-        	<MessageAlert />
         	<TitleName />
-        </div>
+            <div className="side-nav" id="feed">
+                <div className="ui divider line"></div>
+                <div className="djname grey">played by:<DJName /></div>
+      <div id="activitycardgroup">
+      <MessageAlert />
+      </div>
+    </div>
+    </div>
 )
 }}

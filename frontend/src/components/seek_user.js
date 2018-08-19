@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import '../css/SeekControl.css'
 
 export default class SeekControl extends Component {
   constructor(props){
@@ -12,7 +12,7 @@ export default class SeekControl extends Component {
   
   componentDidMount(){
         this.fetchSeek();
-        this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
+        this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
         this.connection.onopen = (e) => {console.log('Seek Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {
@@ -53,7 +53,7 @@ HHMMSS = (sec) => {
             this.connection.send(JSON.stringify(data_format));
 }
   fetchSeek(){
-        fetch('http://localhost:8000/api/song/').then((result) => { 
+        fetch('http://'+window.location.hostname+':8000/api/song/').then((result) => { 
             return result.json();
         }).then((jsonResult) => {
             this.setState({ seek: jsonResult['seek'], duration: jsonResult['duration']});
@@ -62,18 +62,12 @@ HHMMSS = (sec) => {
 
 
   componentWillUnmount() {
-        this.connection.onclose  = function(e){
-        console.error('Seek Socket Closed!!');
-    };
     }
 
   render() {
 
     return (
-       <div>
             <input type="range" min="0" max={this.state.duration} value={this.state.seek} onChange={this.handleChange} className="seekbar"/>
-            <p>{this.HHMMSS(this.state.seek)}/{this.HHMMSS(this.state.duration)}</p>
-       </div> 
     )
   }
 }

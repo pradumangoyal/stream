@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import dj from './images/dj_emoji.gif'
 import MessageAlertImage from './message_alert_reaction'
 import DJName from './dj_name'
-import '../css/dj.css'
+
 import dj_logo from './images/dj_logo.png'
 export default class DJImage extends Component{
 render(){

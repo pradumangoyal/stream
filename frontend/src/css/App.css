@@ -1,0 +1,197 @@
+
+#logout{
+    color: #D2CEE4;
+    font-size: 1rem;
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1rem;
+    margin-bottom: 1rem;
+    transition-duration: 0.25s;
+    }
+    #logout:hover{
+    color: white;
+    transition-duration: 0.25s;
+}
+/*Containers CSS*/
+.side-nav{
+    display: inline-block;
+    width: 18.75rem;
+    background-color: #1f1838;
+    height: 85vh;
+    overflow: hidden;
+}
+.left-side-nav{
+    position: relative;
+    display: inline-block;
+    width: 4.5rem;
+    height: 85vh;
+    overflow-y: auto;
+    background: #1f1838;
+}
+.main{
+    display: inline-block;
+    width: calc(100vw - 23.25rem);
+    height: 85vh;
+    background: #18142f;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+.controls{
+    display: block;
+    width: 100vw;
+    height: 15vh;
+    background-color: #282248;
+    margin-top: -0.4em;
+}
+
+/*App Elements*/
+/*Side nav*/
+.djname{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18.75rem;
+    height: 5vh;
+    color: white;
+    font-size: 1.8rem;
+    text-overflow: ellipsis;
+    margin-top: 1.5em;
+    font-family: 'Muli', sans-serif;
+}
+.grey{
+    margin-top: 0;
+    font-size: 1.2em;
+    z-index: 2;
+    color: #D2CEE4;
+}
+.side-nav .line{
+    margin-top: 0;
+}
+
+
+/*Ends Container CSS*/
+
+/*Controls*/
+
+.currentsong{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    width: 25vw;
+    max-width: 31.25rem;
+    padding-right: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    color: white;
+    text-overflow: clip;
+    font-style: 'Muli', sans-serif;
+    margin-left: 6rem !important;
+    font-size: 1.2rem;
+    margin-right: 0;
+    vertical-align: center;
+}
+
+.currentsong img{
+    display: inline-block;
+    height: 10vh;
+    min-width: 8rem;
+    margin-right: 0.95rem;
+    background: transparent;
+}
+.playcontrols{
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: bottom;
+    height: 15vh;
+    width: 40vw;
+    max-width: 50rem;
+    justify-content: center;
+    align-items: flex-start;
+    white-space: nowrap;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: white;
+    padding-left: 4px;
+    margin-left: 2rem;
+    vertical-align: center;
+}
+.playcontrols .fas{
+    font-size: 1rem;
+    vertical-align: baseline;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+.volumecontrols{
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: bottom;
+    height: 15vh;
+    width: 20vw;
+    max-width: 20rem;
+    justify-content: center;
+    align-items: flex-start;
+    white-space: nowrap;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: white;
+    padding-left: 4px;
+}
+
+.volumecontrols .fas{
+    font-size: 1.1rem;
+    vertical-align: baseline;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+/*Controls Ends*/    
+
+
+
+/*Activity Card*/
+#activitycardgroup{
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .activitycard{
+    background-color: white;
+    width: 90%;
+    border: 1px solid white;
+    border-radius: .28571429rem;
+    max-height: 5.4375rem;
+    border-radius: 1rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.2em;
+    padding: 0.5em;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .activitycard:hover{
+    border-color:2px solid black;
+  }
+  .activitycard .imagecard i{
+    vertical-align: middle;
+  }
+  .activitycard .username, .activitycard .detail{
+    font-weight: 600;
+  }
+  .activitycard .imagecard .icon{
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+  }
+  .activitycard .reacticon{
+    margin-right: 0.2rem;
+  }

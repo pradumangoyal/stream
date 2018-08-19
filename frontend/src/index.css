@@ -1,135 +1,148 @@
-html, body, #root {
+*{
   margin: 0;
   padding: 0;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-}
-
-body {
-  background: linear-gradient(110deg, #FF7F7F 60%, #F3B768 60%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  max-width: 100vw;
-  margin: 0;
-  padding: 0;
-}
-
-.body{
-margin: 0;
-padding: 0;
-height: 100vh;
-overflow: hidden;
-max-width: 100vw;
-min-height: 600px;
-}
-.App-header-login {
-  background-color: #0e1111;
-  min-height: 100px;
-  height: 100px;
-  min-width: 100vw;
-  max-width: 100vw;
-  padding: 0;
-  margin: 0;
-  color: white;
-  display: flex;
-  flex-direction: row;
-}
-
-/*.
-   Pages.
-*/
-.login-page {
-  display: flex;
-  max-width: 100vw;
-  min-height: 100vh;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
+  font-family: 'Muli', sans-serif;
+}
+#logout{
+  color: #D2CEE4;
+  font-size: 1rem;
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1rem;
+  margin-bottom: 1rem;
+  transition-duration: 0.25s;
+}
+#logout:hover{
+  color: white;
+  transition-duration: 0.25s;
 }
 
-.form-container, .regform-container{
+/*Controls*/
+.currentsong{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  width: 25vw;
+  max-width: 31.25rem;
+  padding-right: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  color: white;
+  text-overflow: clip;
+  font-style: 'Muli', sans-serif;
+  margin-left: 6rem !important;
+  font-size: 1.2rem;
+  margin-right: 0;
+  vertical-align: center;
+}
+
+.currentsong img{
+  display: inline-block;
+  height: 10vh;
+  min-width: 8rem;
+  margin-right: 0.95rem;
+  background: transparent;
+}
+.playcontrols{
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: bottom;
+  height: 15vh;
+  width: 40vw;
+  max-width: 50rem;
+  justify-content: center;
+  align-items: flex-start;
+  white-space: nowrap;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: white;
+  padding-left: 4px;
+  margin-left: 2rem;
+  vertical-align: center;
+}
+.playcontrols .fas{
+  font-size: 1rem;
+  vertical-align: baseline;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+.volumecontrols{
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: bottom;
+  height: 15vh;
+  width: 20vw;
+  max-width: 20rem;
+  justify-content: center;
+  align-items: flex-start;
+  white-space: nowrap;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: white;
+  padding-left: 4px;
+}
+
+.volumecontrols .fas{
+  font-size: 1.1rem;
+  vertical-align: baseline;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+/*Slider*/
+input[type="range"]{
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 2px; /* Specified height */
+  background: white; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  width: 45vw;
+  max-width: 45rem;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%; 
+  background: rgb(0, 214, 99);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: rgb(0, 214, 99);
+  cursor: pointer;
+}
+/*End Slider*/
+
+#mute-control{
+  width: 10vw;
+  max-width: 10rem;;
+}
+.reaction_container{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 75vw;
-  max-width: 650px;
-  font-size: 24px;
-
+  padding-bottom: 1rem;
 }
-.form-container input, .regform-container input{
-  width: 50vw;
-  max-width: 435px;
-  margin: 0 auto;
-  justify-content: center;
-  align-self: center;
+.emoji_container{
+  display: inline;
+  margin-top: 2rem;
+  transition-duration: 0.25s;
 }
-.form-container button, .regform-container button{
-  width: 10vw;
-  min-width: 90px;
-}
-.regform-container input{
-  height: 38px;
-  border: 1px #d2d5db solid;
-  padding-left: 5px;
-  font-size: 18px;
-  border-radius: 5px;
-}
-
-.regform-container{
-  margin: 0 auto;
-  margin-top: 3vh;
-  background-color: #E8EBEF;
-  border: 2px #E8EBEF solid;
-  border-radius: 10px;
-}
-.regform-container button{
-  transition-duration: 1s;
-  background-color: #007bff;
-  border: #007bff;
-  color: white;
-  padding: 8px;
-  border-radius: 3px;
-  font-size: 20px;
-
-}
-
-.regform-container button: hover{
-  background-color: #2025b2;
-  border-color: #2025b2;
-}
-.regform-container form{
-  text-align: center;
-}
-.regform-container label{
-  text-align: left;
-}  
-.success{
-  visibility: hidden;
-  text-align: left;
-  background-color: #d7f8da;
-  border: 1px solid #c6f5cb;
-  border-radius: 2px;
-  width: 75vw;
-  max-width: 650px;
-  margin-top: 5px;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
-  color: #1c7224;
-}
-.error{
-  visibility: hidden;
-  text-align: left;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  border-radius: 2px;
-  width: 75vw;
-  max-width: 650px;
-  margin-top: 5px;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
-  color: #721c24;
+.emoji_container:hover{
+  transform: scale(1.2);
+  transition-duration: 0.25s;
 }

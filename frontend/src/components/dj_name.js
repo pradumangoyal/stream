@@ -34,11 +34,12 @@ export default class DJName extends Component {
         console.error('DJ Socket Closed!!');
     };
     }
-
   render() {
-
+    let spanStyle = {
+        marginLeft: '5px',
+    }
     return (
-       <span>DJ{this.state.dj}</span>
+       <span style={spanStyle}>DJ<span style={spanStyle}>{this.state.dj}</span></span>
     );
   }
 }

@@ -10,7 +10,7 @@ export default class VolumeControl extends Component {
     }
 
   handleClick = (event) => {
-            var a = document.getElementById('mute-control').getAttribute('label');
+            var a = document.getElementById('mute-controlid').getAttribute('label');
             var b = (a === "0" ? "1" : "0");
            var ref = JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token'];
             var data_format =  {
@@ -57,9 +57,9 @@ export default class VolumeControl extends Component {
   render() {
 
     return (
-       <div onClick={this.handleClick} label={this.state.mute} id="mute-control">
+       <span onClick={this.handleClick} label={this.state.mute} id="mute-controlid">
             <OptionImage type="sound" source={this.state.mute === "1" ? "unmute" : "mute" } />
-       </div> 
+       </span> 
     )
   }
 }

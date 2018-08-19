@@ -1,10 +1,4 @@
 import React, {Component} from 'react';
-import '../css/reaction.css'
-//import cheer from './images/reactions/cheer.gif';
-//import wow from './images/reactions/wow.gif';
-//import love from './images/reactions/love.gif';
-//import disappointed from './images/reactions/disappointed.gif';
-//import anger from './images/reactions/anger.gif';
 
 export default class Reaction extends Component{
 constructor(props){
@@ -14,9 +8,9 @@ this.state = ({path: ""});
 }
 
 componentDidMount(){
-this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
+this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
 this.connection.onopen = () => {console.log(this.props.reaction)};
-var a = "./images/reactions/"+this.props.reaction+".gif";
+var a = "./images/reactions/"+this.props.reaction+".png";
 this.setState({path: a});
 }
 handleClick = () => {
@@ -34,7 +28,7 @@ handleClick = () => {
             'token': ref
         }
             this.connection.send(JSON.stringify(data_format));
-}
+        }
 
 render(){
     return(

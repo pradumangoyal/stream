@@ -1,0 +1,22 @@
+.searchlist{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90rem;
+}
+.searchItem .content{
+    font-size: 0.75rem !important;
+}
+  .searchItem .mcard{
+    padding-left: 1rem;
+}
+
+.search .heading{
+    width: 80%;
+    margin-top: 2rem;
+    margin-right: 0;
+}
+.searchlistbox{
+    overflow-x: auto;
+    padding-top: 0.25rem;
+}

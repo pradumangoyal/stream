@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import MuteControl from './mute_user';
 
 export default class VolumeControl extends Component {
   constructor(props){
@@ -53,10 +53,10 @@ export default class VolumeControl extends Component {
   render() {
 
     return (
-       <div>
-            <label><input type="range" min="0" max="100" value={this.state.volume} onChange={this.handleChange} /></label>
-            <p>{this.state.volume}</p>
-       </div> 
+       <span>
+            <div><input type="range" min="0" max="100" value={this.state.volume} onChange={this.handleChange} id="mute-control"/></div>
+            <div><MuteControl />{this.state.volume}</div>
+       </span> 
     )
   }
 }

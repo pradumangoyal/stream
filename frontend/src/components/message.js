@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Reaction from './reaction'
-import "../css/reaction.css"
 export default class Message extends Component{
 
 componentDidMount(){
- this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
+ this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
  this.connection.onopen = (e) => {console.log('Message Socket connected Successfully')
 }}
 componentWillUnmount(){
