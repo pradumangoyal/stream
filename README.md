@@ -32,7 +32,7 @@ $ pip install -r requirement.txt
 ```
 5. Migrate Files
 ```shell
-$ python manage.py makemigrations stream
+$ python manage.py makemigrations
 $ python manage.py migrate
 ```
 6. Make a Superuser with username 'stream_mainpc'(keep this in mind)
