@@ -45,6 +45,8 @@ $ python manage.py shell
 > from stream_sockets.models import Song_model
 > Song_model.objects.create()
 ```
+Press Ctrl-D
+
 6. Run the app(on localhost:8000)
 ```shell
 $ docker run -p 6379:6379 -d redis:2.8
