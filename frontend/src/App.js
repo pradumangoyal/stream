@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/App.css'
+import { Loader } from 'semantic-ui-react'
 //import autorefresh from 'jwt-autorefresh'
 import VolumeControl from './components/volume_user';
 import SeekControl from './components/seek_user';
@@ -17,7 +18,7 @@ import Trending from './components/trending'
 class App extends Component {
   constructor(props){
      super(props) ;
-     this.logout = this.logout.bind(this);  
+     this.logout = this.logout.bind(this);
    }
   componentDidMount(){
     this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');   
@@ -39,29 +40,29 @@ class App extends Component {
   render() {
     return (
     <div className="App">
-    <div className="left-side-nav" id="reactions">
-      <Message /><MessageAlert />
-      <i  onClick={this.logout} className="logout fas fa-sign-out-alt" id="logout"></i>
-    </div>
-    <div className="main" id="screen">
-      <SearchBar /><Trending />
-    </div>
-    <div className="side-nav" id="feed">
-      <div className="djname"><i className="fas fa-headphones icon"></i>Activity Feed
-     
+      <div className="left-side-nav" id="reactions">
+        <Message /><MessageAlert />
+        <i  onClick={this.logout} className="logout fas fa-sign-out-alt" id="logout"></i>
       </div>
-      <div className="ui divider line"></div>
-      <div className="djname grey">Played by: <DJName /></div>
-      <div id="activitycardgroup">
-     
+      <div className="main" id="screen">
+        <SearchBar /><Trending />
+      </div>
+      <div className="side-nav" id="feed">
+        <div className="djname"><i className="fas fa-headphones icon"></i>Activity Feed
+      
+        </div>
+        <div className="ui divider line"></div>
+        <div className="djname grey">Played by: <DJName /></div>
+        <div id="activitycardgroup">
+      
+        </div>
+      </div>
+      <div className="controls" id="footer">
+        <div className="currentsong"><Thumbnail /><TitleName /></div>
+        <div className="playcontrols"><div><SeekControl /></div><div><PlayControl /><DurationControl /></div></div>
+        <div className="volumecontrols"><VolumeControl /></div>
       </div>
     </div>
-    <div className="controls" id="footer">
-      <div className="currentsong"><Thumbnail /><TitleName /></div>
-      <div className="playcontrols"><div><SeekControl /></div><div><PlayControl /><DurationControl /></div></div>
-      <div className="volumecontrols"><VolumeControl /></div>
-    </div>
-      </div>
     );
   }
 }

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import ReactPlayer from 'react-player'
-import MessageAlert from './message_alert';
-import TitleName from './title_name';
-import logo from '../logo.png';
+import '../css/player.css'
 import DJName from './dj_name';
 export default class Stream extends Component{
 constructor(props){
@@ -155,33 +153,30 @@ componentDidMount(){
   }
 render(){
     return(
-        <div className="Stream">
-        <header className="App-header2">
-          <div className="logo_container"><img src={logo} className="App-logo" alt="logo" /></div>
-          <h1 className="App-title">Stream</h1>
-         </header>
-        	<ReactPlayer 
+        <div className="App playercontainer">
+        <div className="main" id="screen">
+        <ReactPlayer 
         	className="player"
         	ref={this.ref} 
         	url={this.state.url} 
         	playing={this.state.play === 'true'} 
         	muted={this.state.mute === 'true'} 
         	volume={this.state.volume} 
-        	width="100%" 
-        	height="100%" 
         	onPause={this.handlepause} 
         	ondPlay={this.handleplay}
         	onDuration={this.initialize}
         	onProgress={this.progress}
         	/>
-        	<TitleName />
-            <div className="side-nav" id="feed">
-                <div className="ui divider line"></div>
-                <div className="djname grey">played by:<DJName /></div>
-      <div id="activitycardgroup">
-      <MessageAlert />
+        </div>
+        <div className="side-nav" id="feed">
+          <div className="djname"><i className="fas fa-headphones icon"></i>Activity Feed
+        
+          </div>
+          <div className="ui divider line"></div>
+          <div className="djname grey">Played by: <DJName /></div>
+          <div id="activitycardgroup">
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
 )
 }}

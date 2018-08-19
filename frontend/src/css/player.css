@@ -1,0 +1,11 @@
+.playercontainer .main{
+    width: calc(100vw - 18.75rem);
+    height: 100vh;
+}
+.playercontainer .side-nav{
+    height: 100vh;
+}
+.playercontainer .player{
+    width: calc(100vw - 18.75rem) !important;
+    height: 100vh !important;
+}
