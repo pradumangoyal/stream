@@ -25,7 +25,7 @@ export default class VolumeControl extends Component {
             this.connection.send(JSON.stringify(data_format));
 }
   fetchVolumeData(){
-        fetch('http://localhost:8000/api/song/').then((result) => { 
+        fetch('http://'+window.location.hostname+':8000/api/song/').then((result) => { 
             return result.json();
         }).then((jsonResult) => {
             this.setState({ volume: jsonResult['volume']});
@@ -34,7 +34,7 @@ export default class VolumeControl extends Component {
 
   componentDidMount(){
         this.fetchVolumeData();
-        this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
+        this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
         this.connection.onopen = (e) => {console.log('Volume Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {

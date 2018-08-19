@@ -29,7 +29,7 @@ export default class PlayControl extends Component {
 
 }
   fetchPlayData(){
-        fetch('http://localhost:8000/api/song/').then((result) => { 
+        fetch('http://'+window.location.hostname+':8000/api/song/').then((result) => { 
             return result.json();
         }).then((jsonResult) => {
             this.setState({ play: jsonResult['play']});
@@ -38,9 +38,7 @@ export default class PlayControl extends Component {
 
   componentDidMount(){
         this.fetchPlayData();
-        this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
-        this.connection.onopen = (e) => {console.log('Play/Pause Socket connected Successfully')}
-
+        this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
         var play = data['play'];
@@ -49,9 +47,6 @@ export default class PlayControl extends Component {
 }
   
   componentWillUnmount() {
-        this.connection.onclose  = function(e){
-        console.error('Play/Pause Socket Closed!!');
-    };
     }
 
   render() {

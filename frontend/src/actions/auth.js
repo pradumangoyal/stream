@@ -7,7 +7,7 @@ export const TOKEN_RECEIVED = '@@auth/TOKEN_RECEIVED';
 export const TOKEN_FAILURE = '@@auth/TOKEN_FAILURE';
 export const login = (username, password) => ({
   [RSAA]: {
-    endpoint: 'http://localhost:8000/api/auth/token/obtain/',
+    endpoint: 'http://'+window.location.hostname+':8000/api/auth/token/obtain/',
     method: 'POST',
     body: JSON.stringify({username, password}),
     headers: { 'Content-Type': 'application/json' },

@@ -103,7 +103,7 @@ progress = () => {
 	}
 componentDidMount(){
 	this.fetchData();
-	this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
+	this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
     this.connection.onopen = (e) => {console.log('Main PC Socket connected Successfully')}
     this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data);

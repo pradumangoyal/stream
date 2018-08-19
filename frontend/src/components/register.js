@@ -16,7 +16,7 @@ export default class Register extends Component {
         document.getElementById('error').style.visibility = 'hidden';
         document.getElementById('success').style.visibility = 'hidden';
         if(this.state.password1 == this.state.password2){
-            fetch('http://localhost:8000/api/register/', {
+            fetch('http://'+window.location.hostname+':8000/api/register/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

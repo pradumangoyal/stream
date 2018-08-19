@@ -29,7 +29,7 @@ export default class VolumeControl extends Component {
 
 }
   fetchMuteData(){
-        fetch('http://localhost:8000/api/song/').then((result) => { 
+        fetch('http://'+window.location.hostname+':8000/api/song/').then((result) => { 
             return result.json();
         }).then((jsonResult) => {
             this.setState({ mute: jsonResult['mute']});
@@ -38,7 +38,7 @@ export default class VolumeControl extends Component {
 
   componentDidMount(){
         this.fetchMuteData();
-        this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
+        this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
         this.connection.onopen = (e) => {console.log('Mute Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {

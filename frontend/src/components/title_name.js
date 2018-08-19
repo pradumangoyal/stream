@@ -9,7 +9,7 @@ export default class TitleName extends Component {
     }
 
   fetchSongData(){
-        fetch('http://localhost:8000/api/song/').then((result) => { 
+        fetch('http://'+window.location.hostname+':8000/api/song/').then((result) => { 
             return result.json();
         }).then((jsonResult) => {
             this.setState({ title: jsonResult['title'], dj: jsonResult['dj']});
@@ -18,7 +18,7 @@ export default class TitleName extends Component {
 
   componentDidMount(){
         this.fetchSongData();
-        this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
+        this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
         this.connection.onopen = (e) => {console.log('Title Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {

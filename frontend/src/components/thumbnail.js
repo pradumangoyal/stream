@@ -9,7 +9,7 @@ export default class Thumbnail extends Component {
     }
 
   fetchSongData(){
-        fetch('http://localhost:8000/api/song/').then((result) => { 
+        fetch('http://'+window.location.hostname+':8000/api/song/').then((result) => { 
             return result.json();
         }).then((jsonResult) => {
             var url = "https://i.ytimg.com/vi/"+jsonResult['url']+"/hqdefault.jpg?sqp=-oaymwEYCNIBEHZIVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAX5camV6b5ih1VzPsJbLMgEa3-lg"
@@ -19,7 +19,7 @@ export default class Thumbnail extends Component {
 
   componentDidMount(){
         this.fetchSongData();
-        this.connection = new WebSocket('ws://localhost:8000/ws/stream/');
+        this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
         this.connection.onopen = (e) => {console.log('Thumbnail Socket connected Successfully')}
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 
