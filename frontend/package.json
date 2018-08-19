@@ -7,7 +7,6 @@
     "history": "^4.7.2",
     "jwt-autorefresh": "^0.2.4",
     "jwt-decode": "^2.2.0",
-    "proxy": "http://localhost:8000/",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-flash-message": "^1.0.2",
