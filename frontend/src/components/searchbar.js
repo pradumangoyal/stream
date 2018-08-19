@@ -23,7 +23,6 @@ export default class SearchBar extends Component {
         this.setState({videos: []});
     else{
         YTSearch({key: API_KEY, term: event.target.value}, (videos) => {
-            console.log(videos);
             this.setState({
             videos: videos,
         });

@@ -20,7 +20,6 @@ export default class DurationControl extends Component {
             let seek = data['seek'];
             (seek === "") ? void(0) : this.setState({seek: seek});
             (duration === "" ) ? void(0) : this.setState({ duration: duration});
-            console.log('hi');
         };
     }
     
