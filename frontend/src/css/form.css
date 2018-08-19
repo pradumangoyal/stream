@@ -1,0 +1,39 @@
+.form-container{
+    position: relative;
+    background-color: #282248;
+    height: 100vh;
+    overflow: auto;
+}
+.form-div{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1f1838;
+    max-width: 25rem;
+    width: 40%;
+    min-width: 20rem;
+    margin: 0 auto;
+    overflow-y: auto;
+    padding: 1.5rem; 
+    color: #D2CEE4;
+    min-height: 20rem;
+    border: 1px #D2CEE4 solid;
+    border-radius: 0.25rem;
+    overflow: auto;
+    transition-duration: 1s;
+}
+.form-div:hover{
+    background: rgba(255,255,255, 0.1);
+    transition-duration: 1s;
+}
+.form-div label{
+    color: #D2CEE4 !important;
+}
+.form-div a{
+    color: white;
+    transition-duration: 0.5;
+}
+.form-div a:hover{
+    text-decoration: underline;
+    transition-duration: 0.5;
+}

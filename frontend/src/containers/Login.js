@@ -14,10 +14,6 @@ const Login = (props) => {
   } else {
     return (
       <div className="body" >
-      <header className="App-header-login">
-          <div className="logo_container"></div>
-          <h1 className="App-title">Stream</h1>
-        </header>
       <div className="login-page">
         <LoginForm {...props}/>
       </div></div>
