@@ -3,6 +3,7 @@
     width: 15rem;
     overflow: hidden;
     border-radius: 0;
+    cursor: pointer;
 }
 .mcard .header{
     font-size: 1rem !important;

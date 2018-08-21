@@ -23,7 +23,6 @@ export default class Trending extends Component {
             })
             .then((jsonResult) => {
                 this.setState({ videos: jsonResult['items'] });
-                console.log(this.state.videos);
             })
     }
 

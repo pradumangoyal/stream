@@ -11,6 +11,7 @@
     margin-left: -1rem;
     margin-bottom: 1rem;
     transition-duration: 0.25s;
+    cursor: pointer;
     }
     #logout:hover{
     color: white;
@@ -127,6 +128,7 @@
     vertical-align: baseline;
     margin-top: 0.5rem;
     margin-right: 0.5rem;
+    cursor: pointer;
 }
 .volumecontrols{
     display: inline-flex;
@@ -149,6 +151,7 @@
     vertical-align: baseline;
     margin-top: 0.5rem;
     margin-right: 0.5rem;
+    cursor: pointer;
 }
 /*Controls Ends*/    
 
