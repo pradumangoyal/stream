@@ -28,7 +28,7 @@ export default class Register extends Component {
             })
         }).then((response) => {
             if(response['status']<300 && response['status']>=200 ){
-                this.setState({success: "The Account ("+this.state.username+") Created Successfully. Wait For Admin to Approve Your Account", error:""});
+                this.setState({success: "The account ("+this.state.username+") created successfully. Wait for admin to approve your account", error:""});
                 this.setState({password1: '', password2: '', });
         }
             else{
@@ -45,7 +45,7 @@ export default class Register extends Component {
             }
         )}
         else{
-            this.setState({success:"", error: 'User was not created, Password Does not Match.'});
+            this.setState({success:"", error: 'User was not created, Password does not match.'});
             this.setState({password1: '', password2: '', });
         }
         event.preventDefault();
@@ -73,11 +73,11 @@ export default class Register extends Component {
                 <input type="password" name="password1" value={this.state.password1} placeholder="Password" onChange={this.handleChange} required />
                 </Form.Field>
             <Form.Field>            
-                <label>Confirm_Password</label>
-                <input type="password" name="password2" value={this.state.password2} placeholder="Re-enter Your Password" onChange={this.handleChange} required />
+                <label>Confirm password</label>
+                <input type="password" name="password2" value={this.state.password2} placeholder="Re-enter your password" onChange={this.handleChange} required />
             </Form.Field>
             <Button type="submit">Submit</Button>
-            <div>Have an Account?<a href="./login">Login</a></div>
+            <div>Have an account? <a href="./login">Login</a></div>
           </Form>
           </div>
         </div>

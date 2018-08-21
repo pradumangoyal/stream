@@ -36,7 +36,7 @@ export default class DurationControl extends Component {
         return hours+':'+minutes+':'+seconds;
     }
     fetchSeek(){
-        fetch('http://localhost:8000/api/song/')
+        fetch('http://'+window.location.hostname+':8000/api/song/')
         .then((result) => { 
             return result.json();
         })

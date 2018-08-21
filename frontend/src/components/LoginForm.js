@@ -51,7 +51,7 @@ export default class LoginForm extends Component {
             <input type="password" placeholder="Password" name="password" onChange={this.handleInputChange} />
           </Form.Field>
           <Button type="submit">Login</Button>
-        <div>Dont Have an account Yet? Apply <a href="./register">Here</a> to Be an IMG DJ</div>
+        <div>Dont have an account yet? Apply <a href="./register">here</a> to be an IMG DJ</div>
         </Form>
         </div>
     )
