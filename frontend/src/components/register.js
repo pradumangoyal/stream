@@ -54,7 +54,6 @@ export default class Register extends Component {
     return (
         <div className='body'>
         <div className='form-container'>
-          <div className="success" id="success">{this.state.success}</div>
         <Form onSubmit={this.handleSubmit} error className='form-div' success error>
         <h1>Register</h1>
             {this.state.success ? 
