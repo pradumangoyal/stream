@@ -13,7 +13,7 @@ Stream aims to be a webapp using Django, DRF, and Django Channels as backend and
 
 1. Clone the Repository
 ```shell
-$ git clone https://github.com/pradumangoyal/stream.git
+$ git clone https://github.com/pradumangoyal/stream.git stream
 $ cd stream
 ```
 2. Make virtual environment setup
