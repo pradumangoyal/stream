@@ -25,7 +25,7 @@ SECRET_KEY = '!1s%h1e8hma573fprdq3)kuv+-u5&bc#u4ejrm5h-o@@otseo!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -63,7 +63,7 @@ JWT_AUTH = {
 }
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'
+    'localhost:3000'
 )
 
 ROOT_URLCONF = 'stream.urls'
