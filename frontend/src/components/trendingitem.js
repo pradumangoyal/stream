@@ -16,6 +16,7 @@ handleClick = (event) => {
     var id = this.props.video.snippet.resourceId.videoId;
     var title = a.getAttribute('label');
     var ref = JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token'];
+    if(this.connection.OPEN){
             var data_format =  {
             'url': id,
             'volume': "",
@@ -29,7 +30,7 @@ handleClick = (event) => {
             'token': ref
         }
             this.connection.send(JSON.stringify(data_format));
-}
+}}
 
 componentWillUnmount(){
 this.connection.onclose = () => { console.error('SEND_URL Socket Closed!!')};

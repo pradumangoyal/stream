@@ -15,6 +15,7 @@ this.setState({path: a});
 }
 handleClick = () => {
  var ref = JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token'];
+ if(this.connection.OPEN){
             var data_format =  {
             'url': "",
             'volume': "",
@@ -28,7 +29,7 @@ handleClick = () => {
             'token': ref
         }
             this.connection.send(JSON.stringify(data_format));
-        }
+        }}
 
 render(){
     return(

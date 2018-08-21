@@ -86,7 +86,8 @@ initialize = () => {
 }
 
 progress = () => {
-	var a = this.player.getCurrentTime();
+    var a = this.player.getCurrentTime();
+    if(this.connection.OPEN){
 	a = parseInt(a);
 	        var data_format =  {
             'url': "",
@@ -100,7 +101,7 @@ progress = () => {
             'title': "",
             'token': "stream"       }
             this.connection.send(JSON.stringify(data_format));
-	}
+	}}
 componentDidMount(){
 	this.fetchData();
 	this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');

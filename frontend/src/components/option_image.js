@@ -1,8 +1,4 @@
 import React, {Component} from 'react';
-import unmute from './images/unmute.png';
-import mute from './images/mute.png';
-import play from './images/play.png';
-import pause from './images/pause.png';
 export default class OptionImage extends Component{
     
     render(){

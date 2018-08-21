@@ -38,6 +38,7 @@ HHMMSS = (sec) => {
 }
   handleChange = (event) => {
            var ref = JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token'];
+           if(this.connection.OPEN){
             var data_format =  {
             'url': "",
             'volume': "",
@@ -51,7 +52,7 @@ HHMMSS = (sec) => {
             'token': ref
         }
             this.connection.send(JSON.stringify(data_format));
-}
+}}
   fetchSeek(){
         fetch('http://'+window.location.hostname+':8000/api/song/').then((result) => { 
             return result.json();

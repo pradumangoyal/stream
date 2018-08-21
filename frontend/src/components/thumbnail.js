@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import swal from 'sweetalert';
-import disc from './images/disc_change.png'
 export default class Thumbnail extends Component {
   constructor(props){
         super(props);

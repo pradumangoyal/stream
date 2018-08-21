@@ -17,7 +17,6 @@ export default class TitleName extends Component {
   componentDidMount(){
         this.fetchSongData();
         this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
-        this.connection.onopen = (e) => {console.log('Title Socket connected Successfully')}
 
         this.connection.onmessage = (e) => {
         var data = JSON.parse(e.data); 

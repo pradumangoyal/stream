@@ -13,6 +13,7 @@ export default class PlayControl extends Component {
             var a = document.getElementById('play-control').getAttribute('label');
             var b = (a === "0" ? "1" : "0");
            var ref = JSON.parse(JSON.parse(window.localStorage.getItem('persist:polls'))['auth'])['access']['token'];
+           if(this.connection.OPEN){
             var data_format =  {
             'url': "",
             'volume': "",
@@ -26,7 +27,7 @@ export default class PlayControl extends Component {
             'token': ref
         }
             this.connection.send(JSON.stringify(data_format));
-
+      }
 }
   fetchPlayData(){
         fetch('http://'+window.location.hostname+':8000/api/song/').then((result) => { 
