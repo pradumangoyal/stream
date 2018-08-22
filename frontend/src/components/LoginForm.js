@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { Button, Form, Message} from 'semantic-ui-react'
-import './../css/form.css'
-import TextInput from './TextInput'
+import './../css/Form.css'
 
 
 export default class LoginForm extends Component {

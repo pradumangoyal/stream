@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TrendingItem from './trendingitem'
+import TrendingItem from './TrendingItem'
 export default class TrendingList extends Component{
 constructor(props){
     super(props);

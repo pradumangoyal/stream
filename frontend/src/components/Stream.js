@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import ReactPlayer from 'react-player'
-import TitleName from './title_name'
-import MessageAlert from './message_alert'
-import '../css/player.css'
-import DJName from './dj_name';
+import TitleName from './TitleName'
+import MessageAlert from './MessageAlert'
+import '../css/Player.css'
+import DJName from './DjName';
 export default class Stream extends Component{
 constructor(props){
 super(props);

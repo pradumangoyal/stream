@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import MuteControl from './mute_user';
+import MuteControl from './MuteUser';
 
 export default class VolumeControl extends Component {
   constructor(props){

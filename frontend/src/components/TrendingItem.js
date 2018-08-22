@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import './../css/itemcard.css'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import './../css/ItemCard.css'
 
 export default class TrendingItem extends Component {
 constructor(props){

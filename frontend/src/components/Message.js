@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Reaction from './reaction'
+import Reaction from './Reaction'
 export default class Message extends Component{
 
 componentDidMount(){

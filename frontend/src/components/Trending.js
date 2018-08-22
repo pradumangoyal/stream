@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TrendingList from './trendinglist'
+import TrendingList from './TrendingList'
 import 'semantic-ui-css/semantic.min.css';
 const API_KEY = "AIzaSyBWrbInxNOvSTDxxM95HEVF6ApT1VCTIOA"
 

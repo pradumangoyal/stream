@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import YTSearch from 'youtube-api-search'
-import VideoList from "./videolist"
+import VideoList from "./VideoList"
 import 'semantic-ui-css/semantic.min.css';
 import { Input } from 'semantic-ui-react'
-import './../css/search.css'
+import './../css/Search.css'
 const API_KEY = "AIzaSyBWrbInxNOvSTDxxM95HEVF6ApT1VCTIOA"
 
 

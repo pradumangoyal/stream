@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import './css/App.css'
-import { Loader } from 'semantic-ui-react'
-//import autorefresh from 'jwt-autorefresh'
-import VolumeControl from './components/volume_user';
-import SeekControl from './components/seek_user';
-import PlayControl from './components/play_user';
-import MuteControl from './components/mute_user';
-import SearchBar from './components/searchbar';
-import DJName from './components/dj_name'
-import TitleName from './components/title_name'
-import Message from './components/message'
-import MessageAlert from './components/message_alert'
-import DJImage from './components/dj'
-import Thumbnail from './components/thumbnail'
-import DurationControl from './components/duration'
-import Trending from './components/trending'
+import VolumeControl from './components/VolumeUser';
+import SeekControl from './components/SeekUser';
+import PlayControl from './components/PlayUser';
+import SearchBar from './components/Searchbar';
+import DJName from './components/DjName'
+import TitleName from './components/TitleName'
+import Message from './components/Message'
+import MessageAlert from './components/MessageAlert'
+import Thumbnail from './components/Thumbnail'
+import DurationControl from './components/Duration'
+import Trending from './components/Trending'
 class App extends Component {
   constructor(props){
      super(props) ;

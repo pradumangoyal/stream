@@ -10,8 +10,8 @@ import configureStore from './store'
 import {Route, Switch} from 'react-router'
 import Login from './containers/Login';
 import PrivateRoute from './containers/PrivateRoute';
-import Stream from './components/stream'
-import Register from './components/register'
+import Stream from './components/Stream'
+import Register from './components/Register'
 const history = createHistory()
 const store = configureStore(history)
 ReactDOM.render((

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import './../css/searchcard.css'
+import './../css/SearchCard.css'
 
 export default class VideoItem extends Component {
 constructor(props){

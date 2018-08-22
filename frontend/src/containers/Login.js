@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import logo from '../logo.png';
 import LoginForm from '../components/LoginForm'
 import {login} from  '../actions/auth'
 import {authErrors, isAuthenticated} from '../reducers'

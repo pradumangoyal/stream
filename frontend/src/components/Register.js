@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 import { Button, Form, Message} from 'semantic-ui-react'
-import Error from './error'
-import logo from '../logo.png';
 
 export default class Register extends Component {
     constructor(props){
