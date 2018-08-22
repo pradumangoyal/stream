@@ -54,4 +54,9 @@ a:hover{
     color: white;
     cursor: move;
 }
-
+#active .draggable{
+    background-color: #90ee90;
+}
+#inactive .draggable{
+    background-color:#ee9090; 
+}
