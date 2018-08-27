@@ -1,13 +1,15 @@
 # stream
 
-Stream aims to be a webapp using Django, DRF, and Django Channels as backend and using React as frontend which can be use to stream live music on a PC, while you can control the song using other PC's connected by LAN, in a network
+Stream is a webapp using Django, DRF, and Django Channels as backend and using React as frontend which can be use to stream live music on a PC, while you can control the song using other PC's connected by LAN, in a network
 
-# Dependencies
+![Login Screen](/images/login.png)
+_Login Screen_
 
-* python3
-* pip
-* virtualenv
-* npm packages already added
+![Controller Screen](/images/controller.png)
+_Controller Screen_
+
+![Player Screen](/images/player.png)
+_Player Screen_
 
 # Build and Run
 
@@ -27,7 +29,7 @@ $ source <env_name>/bin/activate
 ```
 4. Install requirements
 ```shell
-$ cd ./backend/stream/
+$ cd ./backend/
 $ pip install -r requirement.txt
 ```
 5. Migrate Files
@@ -54,7 +56,7 @@ $ python manage.py runserver
 ```
 7. Run react
 ```shell
-$ cd ../../frontend
+$ cd ../frontend
 $ npm install
 $ npm start
 ```
