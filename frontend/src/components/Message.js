@@ -3,13 +3,8 @@ import Reaction from './Reaction'
 export default class Message extends Component{
 
 componentDidMount(){
- this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
- this.connection.onopen = (e) => {console.log('Message Socket connected Successfully')
-}}
+}
 componentWillUnmount(){
-    this.connection.onclose = function(e){
-    console.error('Message Socket Closed!!');
-};
 }
 
 render(){

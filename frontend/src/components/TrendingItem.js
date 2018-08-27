@@ -1,14 +1,16 @@
 import React, {Component} from 'react'
 import './../css/ItemCard.css'
+import streamSocket from './Socket';
 
 export default class TrendingItem extends Component {
 constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.connection = streamSocket;
 }
 
 componentDidMount(){
-    this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
+  
 }
 handleClick = (event) => {
     var a = document.getElementById(this.props.video.snippet.resourceId.videoId);

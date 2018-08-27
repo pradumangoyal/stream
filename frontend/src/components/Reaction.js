@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import streamSocket from './Socket';
 
 export default class Reaction extends Component{
 constructor(props){
@@ -8,7 +9,7 @@ this.state = ({path: ""});
 }
 
 componentDidMount(){
-this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
+this.connection = streamSocket
 this.connection.onopen = () => {console.log(this.props.reaction)};
 var a = "./images/reactions/"+this.props.reaction+".png";
 this.setState({path: a});

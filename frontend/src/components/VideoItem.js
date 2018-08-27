@@ -1,14 +1,15 @@
 import React, {Component} from 'react'
 import './../css/SearchCard.css'
+import streamSocket from './Socket';
 
 export default class VideoItem extends Component {
 constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.connection = streamSocket
 }
 
 componentDidMount(){
-    this.connection = new WebSocket('ws://'+window.location.hostname+':8000/ws/stream/');
 }
 handleClick = (event) => {
     var a = document.getElementById(this.props.video.id.videoId);
