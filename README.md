@@ -68,4 +68,4 @@ $ npm start
 
 # Acknowledgements
 
-Design  Crdits: [@github/gauranshi](https://github.com/gouranshi)
+Design  Credits: [@github/gauranshi](https://github.com/gouranshi)
