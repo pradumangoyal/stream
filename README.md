@@ -65,3 +65,7 @@ $ npm start
     2. Go to localhost:3000 and make a new user before using it you have to approve the user
     3. Using Drag and Drop menu at localhost:8000/ approve users.
  3. Login using the user you have created and enjoy the streaming and best use of common speakers at your workplace or home.
+
+# Acknowledgements
+
+Design  Crdits: [@github/gauranshi](https://github.com/gouranshi)
