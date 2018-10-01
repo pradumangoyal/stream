@@ -1,6 +1,6 @@
-# stream
+# Stream
 
-Stream is a webapp using Django, DRF, and Django Channels as backend and using React as frontend which can be use to stream live music on a PC, while you can control the song using other PC's connected by LAN, in a network
+Stream is a webapp using Django, DRF, and Django Channels as backend and using React as frontend which can be use to stream live music on a PC, while you can control the song using other PC's connected by LAN, in a network.
 
 ![Login Screen](/images/login.png)
 _Login Screen_
