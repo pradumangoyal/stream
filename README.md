@@ -47,7 +47,7 @@ $ python manage.py shell
 > from stream_sockets.models import Song_model
 > Song_model.objects.create()
 ```
-Press Ctrl-D
+Now exit from the shell using the EOF (Ctrl+D for linux).
 
 6. Run the app(on localhost:8000)
 ```shell
@@ -61,9 +61,9 @@ $ npm install
 $ npm start
 ```
 8. Browser part
-    1. Open localhost:3000/stream on a window preferably on the PC connected by speakers (Song will play on this window)
-    2. Go to localhost:3000 and make a new user before using it you have to approve the user
-    3. Using Drag and Drop menu at localhost:8000/ approve users.
+    1. Open localhost:3000/stream (or 127.0.0.1/stream) on a window preferably on the PC connected by speakers (Song will play on this window)
+    2. Open localhost:3000 and make a new user before using it you have to approve the user
+    3. Using Drag and Drop menu at localhost:8000/ an admin can approve users.
  3. Login using the user you have created and enjoy the streaming and best use of common speakers at your workplace or home.
 
 # Acknowledgements
