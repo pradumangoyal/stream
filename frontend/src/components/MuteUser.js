@@ -59,7 +59,7 @@ export default class VolumeControl extends Component {
 
     return (
        <span onClick={this.handleClick} label={this.state.mute} id="mute-controlid">
-            <OptionImage type="sound" source={this.state.mute === "1" ? "unmute" : "mute" } />
+            <OptionImage type="sound" source={this.state.mute === "1" ? "mute" : "unmute" } />
        </span> 
     )
   }

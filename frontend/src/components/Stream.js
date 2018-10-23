@@ -168,7 +168,8 @@ render(){
         	onPause={this.handlepause} 
         	ondPlay={this.handleplay}
         	onDuration={this.initialize}
-            onProgress={this.progress}
+                onProgress={this.progress}
+	        loop={true}
         	/>
             <TitleName />
         </div>
