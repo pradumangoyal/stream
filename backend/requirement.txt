@@ -17,7 +17,7 @@ constantly==15.1.0
 contextlib2==0.5.4
 coreapi==2.3.3
 coreschema==0.0.4
-cryptography==2.2.2
+cryptography==3.2
 daphne==2.2.0
 dj-database-url==0.4.1
 Django==2.0.7
