@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 # Application definition
 
@@ -63,9 +64,11 @@ JWT_AUTH = {
         'JWT_EXPIRATON_DELTA': datetime.timedelta(days=3)
 }
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:3000'
-)
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000'
+]
+
+DJANGO_ALLOW_ASYNC_UNSAFE = True
 
 ROOT_URLCONF = 'stream.urls'
 
