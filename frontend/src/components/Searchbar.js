@@ -4,7 +4,7 @@ import VideoList from "./VideoList"
 import 'semantic-ui-css/semantic.min.css';
 import { Input } from 'semantic-ui-react'
 import './../css/Search.css'
-const API_KEY = "AIzaSyBWrbInxNOvSTDxxM95HEVF6ApT1VCTIOA"
+const API_KEY = "AIzaSyBwsgFW-K4DvwOKdC_12ftDPQhfyv26bkg"
 
 
 let pStyle = {

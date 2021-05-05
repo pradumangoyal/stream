@@ -24,7 +24,7 @@ fetchData = () => {
             var duration = jsonResult['duration'];
             var seek = jsonResult['seek'];
             var play = (jsonResult['play'] == '0' ? 'false' : 'true');
-            var mute = (jsonResult['mute'] == '0' ? 'false' : 'true');
+            var mute = (jsonResult['mute'] == '0' ? 'true' : 'false');
             this.setState(
             {
             	url: url,

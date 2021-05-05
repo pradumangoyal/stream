@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TrendingList from './TrendingList'
 import 'semantic-ui-css/semantic.min.css';
-const API_KEY = "AIzaSyBWrbInxNOvSTDxxM95HEVF6ApT1VCTIOA"
+const API_KEY = "AIzaSyBwsgFW-K4DvwOKdC_12ftDPQhfyv26bkg"
 
 let pStyle = {
     fontSize: '1rem',
@@ -17,7 +17,7 @@ export default class Trending extends Component {
     }
 
     fetchVideos() {
-        fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=20&playlistId=PLFgquLnL59alW3xmYiWRaoz0oM3H17Lth&order=rating&key=AIzaSyBWrbInxNOvSTDxxM95HEVF6ApT1VCTIOA&relevanceLanguage=hin')
+        fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=20&playlistId=PLFgquLnL59alW3xmYiWRaoz0oM3H17Lth&order=rating&key=AIzaSyBwsgFW-K4DvwOKdC_12ftDPQhfyv26bkg&relevanceLanguage=hin')
             .then((result) => {
                 return result.json();
             })
