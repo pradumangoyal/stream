@@ -118,7 +118,7 @@ parso==0.5.2
 pbr==5.4.5
 pexpect==4.6.0
 pickleshare==0.7.5
-Pillow==7.0.0
+Pillow==8.1.1
 pipenv==2020.6.2
 pluggy==0.13.1
 post==2019.4.13
